@@ -14,6 +14,9 @@ public class JettyServer {
         server.setHandler(context);
 
         context.addServlet(new ServletHolder(new Calc()), "/calc");
+        context.addServlet(StaticFileServlet.class, "/*");
+        context.addServlet(StudentServlet.class, "/info");
+        server.setHandler(context);
 
         server.start();
         server.join();
