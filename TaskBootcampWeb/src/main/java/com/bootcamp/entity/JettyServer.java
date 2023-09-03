@@ -13,7 +13,7 @@ public class JettyServer {
 
         server.setHandler(context);
 
-        context.addServlet(new ServletHolder(new HelloServlet()), "/hello");
+        context.addServlet(new ServletHolder(new Calc()), "/calc");
 
         server.start();
         server.join();
