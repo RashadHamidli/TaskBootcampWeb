@@ -1,4 +1,4 @@
-package com.bootcamp.entity;
+package com.bootcamp;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;

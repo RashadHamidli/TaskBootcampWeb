@@ -1,6 +1,0 @@
-####
-POST localhost:8080/calc
-Content-Type: application/x-www-form-urlencoded
-HeaderData: abc123
-
-x=3&y=9

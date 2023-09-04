@@ -1,4 +1,4 @@
-package com.bootcamp.entity;
+package com.bootcamp;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateException;

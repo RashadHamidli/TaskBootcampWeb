@@ -1,4 +1,4 @@
-package com.bootcamp.entity;
+package com.bootcamp;
 
 public class Student {
     private String name;
