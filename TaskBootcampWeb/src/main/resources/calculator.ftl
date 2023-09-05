@@ -5,7 +5,7 @@
 </head>
 <body>
 <h1>Calculator</h1>
-<form action="/calculate" method="post">
+<form action="/calculate" method="get">
     <label for="num1">Number 1:</label>
     <input type="text" id="num1" name="num1"><br>
 

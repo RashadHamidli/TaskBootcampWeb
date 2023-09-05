@@ -38,18 +38,6 @@
             <version>2.3.32</version>
         </dependency>
 
-        <!--        <dependency>-->
-        <!--            <groupId>jakarta.servlet</groupId>-->
-        <!--            <artifactId>jakarta.servlet-api</artifactId>-->
-        <!--            <version>6.0.0</version>-->
-        <!--            <scope>provided</scope>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>org.freemarker</groupId>-->
-        <!--            <artifactId>freemarker</artifactId>-->
-        <!--            <version>2.3.31</version> &lt;!&ndash; En güncel sürümü kontrol ediniz &ndash;&gt;-->
-        <!--        </dependency>-->
-
     </dependencies>
 
     <build>

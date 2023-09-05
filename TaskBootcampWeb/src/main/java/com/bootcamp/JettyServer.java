@@ -12,7 +12,7 @@ public class JettyServer {
 
 
 //        context.addServlet(StaticFileServlet.class, "/*");
-        context.addServlet(StudentServlet.class, "/info");
+//        context.addServlet(StudentServlet.class, "/info");
         context.addServlet(CalculatorServlet.class, "/calculate");
         server.setHandler(context);
 
