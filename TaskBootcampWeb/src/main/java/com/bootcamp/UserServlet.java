@@ -38,8 +38,6 @@ public class UserServlet extends HttpServlet {
         String surname = request.getParameter("surname");
         User user = new User(name, surname);
 
-
-
         Map<String, Object> map = new HashMap<>();
         map.put("name", name);
         map.put("surname", surname);
