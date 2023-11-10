@@ -1,11 +1,10 @@
-package com.company.controller.impl;
+package com.company.controller;
 
-import com.company.controller.inter.UserRestController;
 import com.company.dto.request.TaskRequest;
 import com.company.dto.request.UserRequest;
 import com.company.dto.response.TaskRespons;
 import com.company.dto.response.UserRespons;
-import com.company.service.inter.UserService;
+import com.company.service.impl.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,21 +14,19 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/todoapp/users")
-public class UserRestControllerImpl implements UserRestController {
+public class UserController {
     private final UserService userService;
 
-    public UserRestControllerImpl(UserService userService) {
+    public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @Override
     @GetMapping("/all")
     public ResponseEntity<List<UserRespons>> getAllUsers() {
         List<UserRespons> allUser = userService.getAllUser();
         return ResponseEntity.ok(allUser);
     }
 
-    @Override
     @PutMapping("/update/{userId}")
     public ResponseEntity<UserRespons> updateUser(@PathVariable Long userId,
                                                   @RequestBody UserRequest userRequest) {
@@ -38,7 +35,6 @@ public class UserRestControllerImpl implements UserRestController {
                 : ResponseEntity.status(HttpStatus.CONFLICT).build();
     }
 
-    @Override
     @DeleteMapping("delete/{userId}")
     public ResponseEntity<String> deleteUser(@PathVariable Long userId) {
         boolean deleteUser = userService.deleteUser(userId);
@@ -46,14 +42,12 @@ public class UserRestControllerImpl implements UserRestController {
                 : ResponseEntity.status(HttpStatus.CONFLICT).body("user cannot deleted");
     }
 
-    @Override
     @GetMapping("/{userId}/tasks")
     public ResponseEntity<List<TaskRespons>> getUserTasks(@PathVariable Long userId) {
         List<TaskRespons> userTasks = userService.getUserTasks(userId);
         return ResponseEntity.ok(userTasks);
     }
 
-    @Override
     @PostMapping("/{userId}/{tasksid}")
     public ResponseEntity<TaskRespons> updateUserTaskByUserIdAndTaskId(@PathVariable Long userId,
                                                                        @PathVariable Long tasksid,

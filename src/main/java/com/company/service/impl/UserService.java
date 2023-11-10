@@ -9,7 +9,6 @@ import com.company.dto.request.UserRequest;
 import com.company.dto.response.TaskRespons;
 import com.company.dto.response.UserRespons;
 import com.company.exceptions.MyExceptionHandler;
-import com.company.service.inter.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,17 +16,16 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserService {
     private final UserRepository userRepository;
        private final TaskRepository taskRepository;
 
-    public UserServiceImpl(UserRepository userRepository,  TaskRepository taskRepository) {
+    public UserService(UserRepository userRepository, TaskRepository taskRepository) {
         this.userRepository = userRepository;
         this.taskRepository = taskRepository;
     }
 
 
-    @Override
     public List<UserRespons> getAllUser() {
         List<User> allUsers = userRepository.findAll();
         return allUsers.stream().map(user -> {
@@ -39,7 +37,6 @@ public class UserServiceImpl implements UserService {
         }).collect(Collectors.toList());
     }
 
-    @Override
     public UserRespons updateUser(Long userId, UserRequest userRequest) {
         return userRepository.findById(userId)
                 .map(foundedUser -> {
@@ -57,14 +54,12 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(MyExceptionHandler::new);
     }
 
-    @Override
     public boolean deleteUser(Long userId) {
         Optional<User> optionalUser = Optional.of(userRepository.findById(userId).orElseThrow());
         userRepository.delete(optionalUser.get());
         return true;
     }
 
-    @Override
     public List<TaskRespons> getUserTasks(Long userId) {
         Optional<User> foundedUser = Optional.of(userRepository.findById(userId).orElseThrow());
         List<Task> taskList = foundedUser.get().getTaskList();
@@ -72,7 +67,6 @@ public class UserServiceImpl implements UserService {
         return tasks;
     }
 
-    @Override
     public TaskRespons updateUserTasks(Long userId, Long taskId, TaskRequest taskRequest) {
         return userRepository.findById(userId)
                 .map(user -> {
