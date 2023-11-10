@@ -9,11 +9,11 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.company</groupId>
-    <artifactId>BootCampSpringBootMVC</artifactId>
+    <artifactId>ToDoAppSpringBootMVC</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>BootCampSpringBootMVC</name>
-    <description>BootCampSpringBootMVC</description>
+    <name>ToDoAppSpringBootMVC</name>
+    <description>ToDoAppSpringBootMVC</description>
     <properties>
         <java.version>17</java.version>
     </properties>
