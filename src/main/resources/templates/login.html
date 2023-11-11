@@ -29,14 +29,14 @@
                 <p class="welcome-text">To keep connected with us please login with personal information by email
                     address and password</p>
 
-                <form action="#" class="login-form" id="login-form">
+                <form action="/login" method="post" class="login-form" id="login-form">
                     <div class="text-input-container @@complete">
                             <span class="text-input-icon">
                                 <span>
                                     <img src="img/icons/email.png" alt="">
                                 </span>
                             </span>
-                        <input type="email" class="form-control @@complete" placeholder="Email address" value="">
+                        <input type="email" name="email" class="form-control @@complete" placeholder="Email address" value="">
                     </div>
                     <div class="text-input-container @@complete">
                             <span class="text-input-icon">
@@ -44,13 +44,12 @@
                                     <img src="/img/icons/password.png" alt="">
                                 </span>
                             </span>
-                        <input type="password" class="form-control @@complete" placeholder="Password" value="">
+                        <input type="password" name="password" class="form-control @@complete" placeholder="Password" value="">
                     </div>
 
                     <div class="login-options">
                         <div class="checkbox-container">
-                            <input type="checkbox" class="checkbox-input" id="remember-user" name="remember-user"
-                                   checked="">
+                            <input type="checkbox" class="checkbox-input" id="remember-user" name="remember-user" checked="">
                             <label class="checkbox-overlay" for="remember-user">Remember me</label>
                         </div>
 
@@ -58,9 +57,8 @@
                     </div>
 
                     <div class="button-container">
-                        <!-- Değişiklik: Form submit yerine bir link kullanıyoruz -->
-                        <a href="landing.html" class="btn btn-dark">Login now</a>
-                        <a href="sign-up.html" class="btn btn-light">Create account</a>
+                        <button type="submit" class="btn btn-dark">Login now</button>
+                        <a href="/signup" class="btn btn-light">Create account</a>
                     </div>
                 </form>
 

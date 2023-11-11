@@ -20,6 +20,7 @@ public class JwtServiceImpl implements JwtService {
     private String jwtSigningKey;
     @Value("${refresh.token.expires.in}")
     Long expireSeconds;
+
     @Override
     public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -59,17 +60,12 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        try {
-            return Jwts.parserBuilder()
-                    .setSigningKey(getSigningKey())
-                    .build()
-                    .parseClaimsJws(token)
-                    .getBody();
-        } catch (ExpiredJwtException e) {
-            throw e;
-        } catch (JwtException e) {
-            throw new JwtException("JWT parsing error", e);
-        }
+        return Jwts
+                .parserBuilder()
+                .setSigningKey(getSigningKey())
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     private Key getSigningKey() {

@@ -28,11 +28,10 @@ public class SignUpController {
     @PostMapping()
     public ModelAndView signup(SignUpRequest request) {
         JwtAuthenticationResponse response = authenticationService.signup(request);
-        if (response != null)
-            System.out.println("register successfully");
-        else
+        if (response == null) {
             System.out.println("register cannot be successfully");
-        ModelAndView modelAndView = new ModelAndView("login");
-        return modelAndView;
+            return new ModelAndView("sign-up");
+        }
+        return new ModelAndView("login");
     }
 }

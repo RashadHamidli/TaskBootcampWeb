@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +38,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 request.getPassword() != null &&
                 request.getConfirmPassword() != null &&
                 !request.getPassword().equals(request.getConfirmPassword())) {
-            System.out.println("parollar ferqlidir");
             return null;
         }
         var user = User.builder().firstName(request.getFirstName()).lastName(request.getLastName())
@@ -55,8 +55,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public JwtAuthenticationResponse signin(SigninRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        if (request == null)
+            return null;
+        Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        if (!authenticate.isAuthenticated()) {
+            return null;
+        }
         var user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
         Token foundedToken = tokenRepository.findByUserId(user.getId());
