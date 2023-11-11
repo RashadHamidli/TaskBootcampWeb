@@ -33,6 +33,13 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public JwtAuthenticationResponse signup(SignUpRequest request) {
+        if (request != null &&
+                request.getPassword() != null &&
+                request.getConfirmPassword() != null &&
+                !request.getPassword().equals(request.getConfirmPassword())) {
+            System.out.println("parollar ferqlidir");
+            return null;
+        }
         var user = User.builder().firstName(request.getFirstName()).lastName(request.getLastName())
                 .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER).build();
