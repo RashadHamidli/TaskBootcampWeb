@@ -1,4 +1,4 @@
-package com.company.service;
+package com.company.service.impl;
 
 import com.company.dao.entities.Task;
 import com.company.dao.entities.User;
@@ -9,6 +9,10 @@ import com.company.dto.request.UserRequest;
 import com.company.dto.response.TaskRespons;
 import com.company.dto.response.UserRespons;
 import com.company.exceptions.MyExceptionHandler;
+import com.company.service.inter.UserService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,16 +20,27 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserService {
+public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
        private final TaskRepository taskRepository;
 
-    public UserService(UserRepository userRepository, TaskRepository taskRepository) {
+    public UserServiceImpl(UserRepository userRepository,  TaskRepository taskRepository) {
         this.userRepository = userRepository;
         this.taskRepository = taskRepository;
     }
 
+    @Override
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String username) {
+                return userRepository.findByEmail(username)
+                        .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+            }
+        };
+    }
 
+    @Override
     public List<UserRespons> getAllUser() {
         List<User> allUsers = userRepository.findAll();
         return allUsers.stream().map(user -> {
@@ -37,6 +52,7 @@ public class UserService {
         }).collect(Collectors.toList());
     }
 
+    @Override
     public UserRespons updateUser(Long userId, UserRequest userRequest) {
         return userRepository.findById(userId)
                 .map(foundedUser -> {
@@ -54,12 +70,14 @@ public class UserService {
                 .orElseThrow(MyExceptionHandler::new);
     }
 
+    @Override
     public boolean deleteUser(Long userId) {
         Optional<User> optionalUser = Optional.of(userRepository.findById(userId).orElseThrow());
         userRepository.delete(optionalUser.get());
         return true;
     }
 
+    @Override
     public List<TaskRespons> getUserTasks(Long userId) {
         Optional<User> foundedUser = Optional.of(userRepository.findById(userId).orElseThrow());
         List<Task> taskList = foundedUser.get().getTaskList();
@@ -67,6 +85,7 @@ public class UserService {
         return tasks;
     }
 
+    @Override
     public TaskRespons updateUserTasks(Long userId, Long taskId, TaskRequest taskRequest) {
         return userRepository.findById(userId)
                 .map(user -> {
