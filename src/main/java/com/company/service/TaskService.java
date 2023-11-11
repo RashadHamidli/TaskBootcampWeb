@@ -1,4 +1,4 @@
-package com.company.service.impl;
+package com.company.service;
 
 import com.company.dao.entities.Task;
 import com.company.dao.repository.TaskRepository;

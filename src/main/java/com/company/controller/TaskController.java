@@ -2,7 +2,7 @@ package com.company.controller;
 
 import com.company.dto.request.TaskRequest;
 import com.company.dto.response.TaskRespons;
-import com.company.service.impl.TaskService;
+import com.company.service.TaskService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
