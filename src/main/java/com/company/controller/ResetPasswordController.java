@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LoginController {
+public class ResetPasswordController {
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    @GetMapping("/resetpassword.html")
+    public String resetpassword() {
+        return "resetpassword";
     }
 }

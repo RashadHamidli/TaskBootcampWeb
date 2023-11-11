@@ -1,14 +1,13 @@
 package com.company.controller;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LoginController {
+public class TaskDashboardController {
 
-    @GetMapping("/login")
-    public String login() {
-        return "login";
+    @GetMapping("/tasks-dashboard.html")
+    public String taskdashboard() {
+        return "taskdashboard";
     }
 }
