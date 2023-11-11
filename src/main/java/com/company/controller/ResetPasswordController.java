@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class ResetPasswordController {
 
-    @GetMapping("/resetpassword.html")
+    @GetMapping("/reset-password.html")
     public String resetpassword() {
-        return "resetpassword";
+        return "reset-password";
     }
 }

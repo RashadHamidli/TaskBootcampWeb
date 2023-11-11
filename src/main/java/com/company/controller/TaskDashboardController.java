@@ -8,6 +8,6 @@ public class TaskDashboardController {
 
     @GetMapping("/tasks-dashboard.html")
     public String taskdashboard() {
-        return "taskdashboard";
+        return "tasks-dashboard";
     }
 }

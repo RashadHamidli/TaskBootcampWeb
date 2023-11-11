@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class TaskArchiveController {
-    @GetMapping("/task-archive.html")
+    @GetMapping("/tasks-archive.html")
     public String taskarchive() {
-        return "task-archive";
+        return "tasks-archive";
     }
 }
 
