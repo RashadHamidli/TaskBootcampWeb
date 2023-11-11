@@ -1,4 +1,4 @@
-package com.company.controller;
+package com.company.controller.restcontroller;
 
 import com.company.dto.request.TaskRequest;
 import com.company.dto.response.TaskRespons;
