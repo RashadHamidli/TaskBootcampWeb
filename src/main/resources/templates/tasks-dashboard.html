@@ -121,49 +121,50 @@
                 <a href="#" class="task-btn">Complete</a>
             </div>
         </div>
-
-        <div class="task-card-section">
-            <h3 class="task-card-title">New Task</h3>
-            <div class="task-card">
-                <div class="task-card-left-col">
-                    <div class="task-card-img _1"></div>
-                    <div class="task-card-form">
-                        <div class="task-card-form-row">
-                            <label for="task-card-date" class="task-card-label">Deadline to:</label>
-                            <input name="task-card-date" type="date" value="2020-06-30" class="task-card-input">
+        <form action="/tasksdashboard" method="post" class="tasks-dashboard-form" id="tasks-dashboard-form">
+            <div class="task-card-section">
+                <h3 class="task-card-title">New Task</h3>
+                <div class="task-card">
+                    <div class="task-card-left-col">
+                        <div class="task-card-img _1"></div>
+                        <div class="task-card-form">
+                            <div class="task-card-form-row">
+                                <label for="task-card-date" class="task-card-label">Deadline to:</label>
+                                <input name="dedline" type="date" value="2020-06-30" class="task-card-input">
+                            </div>
+                            <div class="task-card-form-row">
+                                <label for="name-task" class="task-card-label">Name Task</label>
+                                <input name="taskName" type="text" placeholder="Task 002" class="task-card-input">
+                            </div>
                         </div>
-                        <div class="task-card-form-row">
-                            <label for="name-task" class="task-card-label">Name Task</label>
-                            <input name="name-task" type="text" placeholder="Task 002" class="task-card-input">
+                        <div class="task-card-actions">
+                            <a href="#" class="task-card-actions-item">
+                                <img src="img/arrow.png" alt="" class="task-card-actions-icon">
+                                Share
+                            </a>
+                            <a href="#" class="task-card-actions-item">
+                                <img src="img/bell.png" alt="" class="task-card-actions-icon">
+                                Add to important
+                            </a>
+                            <a href="#" class="task-card-actions-item">
+                                <img src="img/trash-bin.png" alt="" class="task-card-actions-icon">
+                                Delete
+                            </a>
                         </div>
                     </div>
-                    <div class="task-card-actions">
-                        <a href="#" class="task-card-actions-item">
-                            <img src="img/arrow.png" alt="" class="task-card-actions-icon">
-                            Share
-                        </a>
-                        <a href="#" class="task-card-actions-item">
-                            <img src="img/bell.png" alt="" class="task-card-actions-icon">
-                            Add to important
-                        </a>
-                        <a href="#" class="task-card-actions-item">
-                            <img src="img/trash-bin.png" alt="" class="task-card-actions-icon">
-                            Delete
-                        </a>
+                    <div class="task-card-right-col">
+                        <h1 class="task-card-header">Task Description</h1>
+                        <p class="task-card-text">
+                        <div class="task-card-form-row">
+                            <label class="task-card-label"></label>
+                            <textarea name="text" class="text-card-input" placeholder="Write your text here..."></textarea>
+                        </div>
+                        </p>
+                        <button type="submit" class="btn btn-dark">Save</button>
                     </div>
-                </div>
-                <div class="task-card-right-col">
-                    <h1 class="task-card-header">Task Description</h1>
-                    <p class="task-card-text">
-                    <div class="task-card-form-row">
-                        <label class="task-card-label"></label>
-                    <textarea class="text-card-input" placeholder="Write your text here..."></textarea>
-                    </div>
-                    </p>
-                    <a href="#" class="btn btn-dark btn-task-card">Save</a>
                 </div>
             </div>
-        </div>
+        </form>
 
     </div>
 </section>

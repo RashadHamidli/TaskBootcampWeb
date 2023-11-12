@@ -48,7 +48,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         Token token = new Token();
         token.setToken(jwt);
         token.setUser(user);
-        token.setExpiryDate(Date.from(Instant.now().plusSeconds(expireSeconds)));
+        token.setExpiryDate(Date.from(Instant.now().plusMillis(expireSeconds)));
         tokenRepository.save(token);
         return JwtAuthenticationResponse.builder().token(jwt).build();
     }

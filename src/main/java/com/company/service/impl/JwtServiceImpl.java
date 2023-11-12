@@ -1,5 +1,6 @@
 package com.company.service.impl;
 
+import com.company.dao.entities.User;
 import com.company.service.inter.JwtService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -25,6 +26,10 @@ public class JwtServiceImpl implements JwtService {
     public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
     }
+    @Override
+    public Long extractUserId(String token) {
+        return Long.parseLong(extractClaim(token, Claims::getId));
+    }
 
     @Override
     public String generateToken(UserDetails userDetails) {
@@ -43,6 +48,13 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
+        Long userId = ((User) userDetails).getId();
+        String userEmail = userDetails.getUsername();
+
+        extraClaims.put("userId", userId);
+        extraClaims.put("userEmail", userEmail);
+
+
         return Jwts.builder()
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())

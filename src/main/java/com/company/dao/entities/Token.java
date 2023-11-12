@@ -23,6 +23,6 @@ public class Token {
     @Column(nullable = false, unique = true)
     String token;
     @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     Date expiryDate;
 }
