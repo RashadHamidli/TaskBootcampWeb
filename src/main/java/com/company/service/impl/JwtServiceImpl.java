@@ -48,12 +48,6 @@ public class JwtServiceImpl implements JwtService {
     }
 
     private String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        Long userId = ((User) userDetails).getId();
-        String userEmail = userDetails.getUsername();
-
-        extraClaims.put("userId", userId);
-        extraClaims.put("userEmail", userEmail);
-
 
         return Jwts.builder()
                 .setClaims(extraClaims)

@@ -22,9 +22,9 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
-       private final TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
-    public UserServiceImpl(UserRepository userRepository,  TaskRepository taskRepository) {
+    public UserServiceImpl(UserRepository userRepository, TaskRepository taskRepository) {
         this.userRepository = userRepository;
         this.taskRepository = taskRepository;
     }
