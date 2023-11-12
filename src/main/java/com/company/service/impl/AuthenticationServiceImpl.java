@@ -41,7 +41,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             return null;
         }
         var user = User.builder().firstName(request.getFirstName()).lastName(request.getLastName())
-                .username(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
+                .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER).build();
         userRepository.save(user);
         var jwt = jwtService.generateToken(user);
@@ -61,7 +61,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (!authenticate.isAuthenticated()) {
             return null;
         }
-        var user = userRepository.findByUsername(request.getEmail());
+        var user = userRepository.findByEmail(request.getEmail());
         Token foundedToken = tokenRepository.findByUserId(user.getId());
         String token = foundedToken.getToken();
         if (jwtService.isTokenValid(token, user)) {
@@ -78,7 +78,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     public JwtAuthenticationResponse refresh(SigninRequest request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        var user = userRepository.findByUsername(request.getEmail());
+        var user = userRepository.findByEmail(request.getEmail());
         var jwt = jwtService.generateToken(user);
         Token token = tokenRepository.findByUserId(user.getId());
         token.setToken(jwt);

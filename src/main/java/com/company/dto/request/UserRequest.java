@@ -16,7 +16,7 @@ public class UserRequest {
         User user = new User();
         user.setFirstName(userRequest.name);
         user.setLastName(userRequest.surname);
-        user.setUsername(userRequest.email);
+        user.setEmail(userRequest.email);
         user.setPassword(userRequest.password);
         return user;
     }

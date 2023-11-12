@@ -29,6 +29,8 @@ public class LoginController {
             System.out.println("register cannot be successfully");
             return new ModelAndView("login");
         }
-        return new ModelAndView("landing");
+        ModelAndView modelAndView = new ModelAndView("tasks-dashboard");
+        modelAndView.addObject("token", response.getToken()); // Add token to the model
+        return modelAndView;
     }
 }

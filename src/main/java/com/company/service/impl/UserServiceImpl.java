@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) {
-                return userRepository.findByUsername(username);
+                return userRepository.findByEmail(username);
             }
         };
     }
