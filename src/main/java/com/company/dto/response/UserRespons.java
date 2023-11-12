@@ -18,7 +18,7 @@ public class UserRespons {
         this.id = user.getId();
         this.name = user.getFirstName();
         this.surname = user.getLastName();
-        this.email = user.getEmail();
+        this.email = user.getUsername();
         this.taskList = tasks;
     }
 }

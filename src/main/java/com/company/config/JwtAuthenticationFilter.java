@@ -36,16 +36,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
+
         jwt = authHeader.substring(7);
+
         userEmail = jwtService.extractUserName(jwt);
-
-        System.out.println("Auth Header: " + authHeader);
-        System.out.println("JWT: " + jwt);
-        System.out.println("User Email from JWT: " + userEmail);
-
 
         if (StringUtils.isNotEmpty(userEmail) && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userServiceImpl.userDetailsService().loadUserByUsername(userEmail);
+
             if (jwtService.isTokenValid(jwt, userDetails)) {
                 SecurityContext context = SecurityContextHolder.createEmptyContext();
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
@@ -54,10 +52,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 context.setAuthentication(authToken);
                 SecurityContextHolder.setContext(context);
 
-                String loggedInUserEmail = SecurityContextHolder.getContext().getAuthentication().getName();
-                System.out.println("Daxil olan istifadəçinin emaili: " + loggedInUserEmail);
             }
+        } else {
+            throw new ServletException();
         }
+
         filterChain.doFilter(request, response);
     }
 
