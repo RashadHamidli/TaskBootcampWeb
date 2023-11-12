@@ -160,7 +160,7 @@
                             <textarea name="text" class="text-card-input" placeholder="Write your text here..."></textarea>
                         </div>
                         </p>
-                        <input type="text" name="Authorization" th:value="'Bearer ' + ${token}" />
+                        <input type="hidden" name="Authorization" th:value="'Bearer ' + ${token}" />
                         <button type="submit" class="btn btn-dark">Save</button>
                     </div>
                 </div>
