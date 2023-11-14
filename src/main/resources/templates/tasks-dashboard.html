@@ -161,7 +161,7 @@
                         <p class="task-card-text">
                         <div class="task-card-form-row">
                             <label class="task-card-label"></label>
-                            <textarea name="text" class="text-card-input" placeholder="Write your text here..."></textarea>
+                            <textarea name="taskDescription" type="text" class="text-card-input" placeholder="Write your text here..."></textarea>
                         </div>
                         </p>
                         <input type="hidden" id="token" th:value="${token}"/>
@@ -176,8 +176,26 @@
 </section>
 
 <script>
+
     // JavaScript ve AJAX ile formu gönderen fonksiyon
     function submitForm() {
+        var taskName = document.getElementsByName("taskName")[0].value;
+        var deadline = document.getElementsByName("deadline")[0].value;
+        var taskDescription = document.getElementsByName("taskDescription")[0].value;
+
+        // Name Task alanının boş olup olmadığını kontrol et
+        if (taskName.trim() === "") {
+            alert("Name Task field cannot be empty!");
+            return;
+        }
+        if (deadline.trim() === "") {
+            alert("Dedline field cannot be empty!");
+            return;
+        }
+        if (taskDescription.trim() === "") {
+            alert("Task Description field cannot be empty!");
+            return;
+        }
         // JavaScript ile token'ı al
         var token = document.getElementById("token").value;
 
