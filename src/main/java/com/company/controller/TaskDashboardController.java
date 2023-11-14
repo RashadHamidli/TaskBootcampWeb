@@ -45,10 +45,6 @@ public class TaskDashboardController {
     @PostMapping("/tasksdashboard")
     public ModelAndView taskdashboard(TaskRequest request) {
 
-        String loggedInUserEmail = SecurityContextHolder.getContext().getAuthentication().getName();
-        Long userId = userService.findByUserId(loggedInUserEmail);
-        taskService.createTaskForUser(userId, request);
-
         return new ModelAndView("/tasks-dashboard");
     }
 }

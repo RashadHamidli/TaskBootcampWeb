@@ -175,7 +175,6 @@
 </section>
 
 <script>
-    // JavaScript ve AJAX ile formu gönderen fonksiyon
     function submitForm() {
         var taskName = document.getElementsByName("taskName")[0].value;
         var deadline = document.getElementsByName("deadline")[0].value;
@@ -194,7 +193,6 @@
             alert("Task Description field cannot be empty!");
             return;
         }
-        // JavaScript ile token'ı al
         var token = document.getElementById("token").value;
 
         // Token'ı localStorage'a ekle

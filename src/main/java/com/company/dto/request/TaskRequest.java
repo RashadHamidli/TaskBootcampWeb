@@ -11,7 +11,6 @@ public class TaskRequest {
     private String taskName;
     private Date deadline;
     private String taskText;
-    private Long userId;
 
 
     public Task taskRequestConverToTask(TaskRequest taskRequest) {
