@@ -77,15 +77,14 @@
                                   placeholder="Write your text here..."></textarea>
                     </div>
                     </p>
-                    <input type="hidden" th:value="${token}" id="token" />
+                    <input type="hidden" th:value="${token}" id="token"/>
                     <button type="button" onclick="submitForm()" class="btn btn-dark">Create task</button>
-                    <button type="button" class="btn btn-dark">Cancel</button>
+                    <button type="button" onclick="cancelForm()" class="btn btn-dark">Cancel</button>
                 </div>
             </div>
         </form>
     </div>
 </section>
-
 <script>
 
     function submitForm() {
@@ -93,34 +92,19 @@
         var deadline = document.getElementsByName("deadline")[0].value;
         var taskText = document.getElementsByName("taskText")[0].value;
 
-        if (taskName.trim() === "") {
-            alert("Name Task field cannot be empty!");
-            return;
-        }
-        if (deadline.trim() === "") {
-            alert("Dedline field cannot be empty!");
-            return;
-        }
-        if (taskText.trim() === "") {
-            alert("Task Description field cannot be empty!");
+        if (taskName.trim() === "" || deadline.trim() === "" || taskText.trim() === "") {
+            alert("All fields are required!");
             return;
         }
         var token = document.getElementById("token").value;
-
         localStorage.setItem('token', token);
-
         var token = localStorage.getItem('token');
-
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "/addtask", true);
-
         xhr.setRequestHeader("Authorization", "Bearer " + token);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
         var formData = new FormData(document.getElementById("add-task-form"));
-
         xhr.send(new URLSearchParams(formData));
-
         xhr.onload = function () {
             if (xhr.status === 200) {
                 console.log("Başarıyla gönderildi.");
@@ -128,7 +112,11 @@
             } else {
                 console.error("Hata oluştu.");
             }
-        };
+        }
+    }
+
+    function cancelForm() {
+        window.location.href = "tasksdashboard";
     }
 </script>
 </body>

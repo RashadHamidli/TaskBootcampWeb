@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Tasks Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Tasks dashboard</title>
 </head>
 <body>
 <header class="main-header">
@@ -14,27 +13,19 @@
     <div class="main-header-wrapper">
         <label class="main-header-search-wrapper">
             <input type="search" class="main-header-search" placeholder="Search">
-            <img src="img/search-icon.svg" alt="Search Icon">
+            <img src="/img/search-icon.svg" alt="Search Icon">
         </label>
         <div class="main-header-profile-wrapper">
             <div class="main-header-profile-credentials">
                 <span class="main-header-profile-welcome">Welcome,</span>
                 <span class="main-header-username">Sample User</span>
             </div>
-            <img class="main-header-user-icon" src="img/user-icon-with-background.svg" alt="User Icon">
+            <img class="main-header-user-icon" src="/img/user-icon-with-background.svg" alt="User Icon">
             <div class="hidden-accordion-wrapper">
                 <ul class="hidden-accordion">
-                    <li class="hidden-accordion-item"><a href="tasks-archive.html"
-                                                         class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="img/archive-icon.svg" alt="User Icon">Archive</a>
-                    </li>
-                    <li class="hidden-accordion-item"><a href="./tasks-dashboard.html"
-                                                         class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="img/favourite-icon.svg" alt="Favourite Icon">My
-                        tasks</a></li>
-                    <li class="hidden-accordion-item"><a href="login.html" class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="img/log-out-icon.svg" alt="Log Out Icon">Log
-                        Out</a></li>
+                    <li class="hidden-accordion-item"><a href="./tasks-archive.html" class="hidden-accordion-item-link"><img class="hidden-accordion-item-image" src="./img/archive-icon.svg" alt="User Icon">Archive</a></li>
+                    <li class="hidden-accordion-item"><a href="./tasks-dashboard.html" class="hidden-accordion-item-link"><img class="hidden-accordion-item-image" src="./img/favourite-icon.svg" alt="Favourite Icon">My tasks</a></li>
+                    <li class="hidden-accordion-item"><a href="./login.html" class="hidden-accordion-item-link"><img class="hidden-accordion-item-image" src="./img/log-out-icon.svg" alt="Log Out Icon">Log Out</a></li>
                 </ul>
             </div>
         </div>
@@ -55,8 +46,8 @@
                         <option class="tasks-filter-item" value="done">Done</option>
                     </select>
                 </form>
-                <form action="/addtask" method="get" class="btn btn-dark btn-add-task" id="btn btn-dark btn-add-task">
-                    <button type="submit" class="btn btn-dark">Add task</button>
+                <form>
+                    <button type="button" onclick="location.href='/addtask'" class="btn btn-dark btn-add-task">Add task</button>
                 </form>
             </div>
         </div>
@@ -66,11 +57,10 @@
                 <h4 class="task-title">Task 001</h4>
                 <p class="task-start-time">21.06.2020</p>
                 <p class="task-deadline">Deadline to: <span class="task-deadline-date">30.06.2020</span></p>
-                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                 <div class="task-icons">
-                    <img class="task-icons-item" src="img/bell.png" alt="bell">
-                    <img class="task-icons-item" src="img/trash-bin.png" alt="bell">
+                    <img class="task-icons-item" src="/img/bell.png" alt="bell">
+                    <img class="task-icons-item" src="/img/trash-bin.png" alt="bell">
                 </div>
                 <a href="#" class="task-btn">Complete</a>
             </div>
@@ -78,11 +68,10 @@
                 <h4 class="task-title">Task 002</h4>
                 <p class="task-start-time">21.06.2020</p>
                 <p class="task-deadline">Deadline to: <span class="task-deadline-date">30.06.2020</span></p>
-                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                 <div class="task-icons">
-                    <img class="task-icons-item" src="img/bell.png" alt="bell">
-                    <img class="task-icons-item" src="img/trash-bin.png" alt="bell">
+                    <img class="task-icons-item" src="/img/bell.png" alt="bell">
+                    <img class="task-icons-item" src="/img/trash-bin.png" alt="bell">
                 </div>
                 <a href="#" class="task-btn">Complete</a>
             </div>
@@ -90,11 +79,10 @@
                 <h4 class="task-title">Task 003</h4>
                 <p class="task-start-time">21.06.2020</p>
                 <p class="task-deadline">Deadline to: <span class="task-deadline-date">30.06.2020</span></p>
-                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                 <div class="task-icons">
-                    <img class="task-icons-item" src="img/bell.png" alt="bell">
-                    <img class="task-icons-item" src="img/trash-bin.png" alt="bell">
+                    <img class="task-icons-item" src="/img/bell.png" alt="bell">
+                    <img class="task-icons-item" src="/img/trash-bin.png" alt="bell">
                 </div>
                 <a href="#" class="task-btn">Complete</a>
             </div>
@@ -102,11 +90,10 @@
                 <h4 class="task-title">Task 004</h4>
                 <p class="task-start-time">21.06.2020</p>
                 <p class="task-deadline">Deadline to: <span class="task-deadline-date">30.06.2020</span></p>
-                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                 <div class="task-icons">
-                    <img class="task-icons-item" src="img/bell.png" alt="bell">
-                    <img class="task-icons-item" src="img/trash-bin.png" alt="bell">
+                    <img class="task-icons-item" src="/img/bell.png" alt="bell">
+                    <img class="task-icons-item" src="/img/trash-bin.png" alt="bell">
                 </div>
                 <a href="#" class="task-btn">Complete</a>
             </div>
@@ -114,109 +101,57 @@
                 <h4 class="task-title">Task 005</h4>
                 <p class="task-start-time">21.06.2020</p>
                 <p class="task-deadline">Deadline to: <span class="task-deadline-date">30.06.2020</span></p>
-                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                <p class="task-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
                 <div class="task-icons">
-                    <img class="task-icons-item" src="img/bell.png" alt="bell">
-                    <img class="task-icons-item" src="img/trash-bin.png" alt="bell">
+                    <img class="task-icons-item" src="/img/bell.png" alt="bell">
+                    <img class="task-icons-item" src="/img/trash-bin.png" alt="bell">
                 </div>
                 <a href="#" class="task-btn">Complete</a>
             </div>
         </div>
 
-        <form action="/tasksdashboard" method="post" class="tasks-dashboard-form" id="tasks-dashboard-form">
-            <div class="task-card-section">
-                <h3 class="task-card-title">New Task</h3>
-                <div class="task-card">
-                    <div class="task-card-left-col">
-                        <div class="task-card-img _1"></div>
-                        <div class="task-card-form">
-                            <div class="task-card-form-row">
-                                <label class="task-card-label">Deadline to:</label>
-                                <input name="deadline" type="date" placeholder="2020-06-30" class="task-card-input">
-                            </div>
-                            <div class="task-card-form-row">
-                                <label class="task-card-label">Name Task</label>
-                                <input name="taskName" type="text" placeholder="Task 002" class="task-card-input">
-                            </div>
+        <div class="task-card-section">
+            <h3 class="task-card-title">Task 002</h3>
+            <div class="task-card">
+                <div class="task-card-left-col">
+                    <div class="task-card-img _1"></div>
+                    <div class="task-card-form">
+                        <div class="task-card-form-row">
+                            <label for="task-card-date" class="task-card-label">Deadline to:</label>
+                            <input name="task-card-date" type="date" value="2020-06-30" class="task-card-input">
                         </div>
-                        <div class="task-card-actions">
-                            <a href="#" class="task-card-actions-item">
-                                <img src="img/arrow.png" alt="" class="task-card-actions-icon">
-                                Share
-                            </a>
-                            <a href="#" class="task-card-actions-item">
-                                <img src="img/bell.png" alt="" class="task-card-actions-icon">
-                                Add to important
-                            </a>
-                            <a href="#" class="task-card-actions-item">
-                                <img src="img/trash-bin.png" alt="" class="task-card-actions-icon">
-                                Delete
-                            </a>
+                        <div class="task-card-form-row">
+                            <label for="name-task" class="task-card-label">Name Task</label>
+                            <input name="name-task" type="text" placeholder="Task 002" class="task-card-input">
                         </div>
                     </div>
-                    <div class="task-card-right-col">
-                        <h1 class="task-card-header">Task Description</h1>
-                        <p class="task-card-text">
-                        <div class="task-card-form-row">
-                            <label class="task-card-label"></label>
-                            <textarea name="taskText" type="text" class="text-card-input"
-                                      placeholder="Write your text here..."></textarea>
-                        </div>
-                        </p>
-                        <input type="hidden" id="token" th:value="${token}"/>
-                        <button type="button" onclick="submitForm()" class="btn btn-dark">Save</button>
+                    <div class="task-card-actions">
+                        <a href="#" class="task-card-actions-item">
+                            <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
+                            Share
+                        </a>
+                        <a href="#" class="task-card-actions-item">
+                            <img src="/img/bell.png" alt="" class="task-card-actions-icon">
+                            Add to important
+                        </a>
+                        <a href="#" class="task-card-actions-item">
+                            <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
+                            Delete
+                        </a>
                     </div>
                 </div>
+                <div class="task-card-right-col">
+                    <h4 class="task-card-header">Task Description</h4>
+                    <p class="task-card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                    <a href="#" class="btn btn-dark btn-task-card">Save</a>
+                </div>
             </div>
-        </form>
+        </div>
 
     </div>
 </section>
-
-<script>
-    function submitForm() {
-        var taskName = document.getElementsByName("taskName")[0].value;
-        var deadline = document.getElementsByName("deadline")[0].value;
-        var taskText = document.getElementsByName("taskText")[0].value;
-
-        // Name Task alanının boş olup olmadığını kontrol et
-        if (taskName.trim() === "") {
-            alert("Name Task field cannot be empty!");
-            return;
-        }
-        if (deadline.trim() === "") {
-            alert("Dedline field cannot be empty!");
-            return;
-        }
-        if (taskText.trim() === "") {
-            alert("Task Description field cannot be empty!");
-            return;
-        }
-        var token = document.getElementById("token").value;
-
-        localStorage.setItem('token', token);
-
-        var token = localStorage.getItem('token');
-
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "/tasksdashboard", true);
-
-        xhr.setRequestHeader("Authorization", "Bearer " + token);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-        var formData = new FormData(document.getElementById("tasks-dashboard-form"));
-
-        xhr.send(new URLSearchParams(formData));
-
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                console.log("Başarıyla gönderildi.");
-            } else {
-                console.error("Hata oluştu.");
-            }
-        };
-    }
-</script>
 </body>
 </html>
