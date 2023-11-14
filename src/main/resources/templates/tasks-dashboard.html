@@ -55,9 +55,8 @@
                         <option class="tasks-filter-item" value="done">Done</option>
                     </select>
                 </form>
-                <form action="/add-task" method="get" class="btn btn-dark btn-add-task" id="btn btn-dark btn-add-task">
+                <form action="/addtask" method="get" class="btn btn-dark btn-add-task" id="btn btn-dark btn-add-task">
                     <button type="submit" class="btn btn-dark">Add task</button>
-                    <!--                    <a href="add-task.html" class="btn btn-dark btn-add-task">Add task</a>-->
                 </form>
             </div>
         </div>
@@ -161,11 +160,11 @@
                         <p class="task-card-text">
                         <div class="task-card-form-row">
                             <label class="task-card-label"></label>
-                            <textarea name="taskDescription" type="text" class="text-card-input" placeholder="Write your text here..."></textarea>
+                            <textarea name="taskText" type="text" class="text-card-input"
+                                      placeholder="Write your text here..."></textarea>
                         </div>
                         </p>
                         <input type="hidden" id="token" th:value="${token}"/>
-                        <!-- Save butonu eklendi ve onclick ile submitForm fonksiyonu çağrıldı -->
                         <button type="button" onclick="submitForm()" class="btn btn-dark">Save</button>
                     </div>
                 </div>
@@ -176,12 +175,11 @@
 </section>
 
 <script>
-
     // JavaScript ve AJAX ile formu gönderen fonksiyon
     function submitForm() {
         var taskName = document.getElementsByName("taskName")[0].value;
         var deadline = document.getElementsByName("deadline")[0].value;
-        var taskDescription = document.getElementsByName("taskDescription")[0].value;
+        var taskText = document.getElementsByName("taskText")[0].value;
 
         // Name Task alanının boş olup olmadığını kontrol et
         if (taskName.trim() === "") {
@@ -192,7 +190,7 @@
             alert("Dedline field cannot be empty!");
             return;
         }
-        if (taskDescription.trim() === "") {
+        if (taskText.trim() === "") {
             alert("Task Description field cannot be empty!");
             return;
         }

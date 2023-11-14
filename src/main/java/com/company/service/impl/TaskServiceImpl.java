@@ -55,8 +55,8 @@ public class TaskServiceImpl implements TaskService {
                         task.setTaskName(taskRequest.getTaskName());
                     if (taskRequest.getDeadline() != null)
                         task.setDedline(taskRequest.getDeadline());
-                    if (taskRequest.getText() != null && !taskRequest.getText().isEmpty())
-                        task.setText(taskRequest.getText());
+                    if (taskRequest.getTaskText() != null && !taskRequest.getTaskText().isEmpty())
+                        task.setTaskText(taskRequest.getTaskText());
                     Task savedTask = taskRepository.save(task);
                     return new TaskRespons(savedTask);
                 })

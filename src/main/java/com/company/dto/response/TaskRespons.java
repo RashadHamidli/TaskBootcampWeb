@@ -17,7 +17,7 @@ public class TaskRespons {
         this.id = task.getId();
         this.taskName = task.getTaskName();
         this.deadline = task.getDedline();
-        this.text = task.getText();
+        this.text = task.getTaskText();
         this.userId = task.getUser().getId();
     }
 }

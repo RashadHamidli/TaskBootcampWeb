@@ -24,7 +24,7 @@ public class Task {
     @Temporal(TemporalType.DATE)
     private Date dedline;
     @Column(nullable = false)
-    private String text;
+    private String taskText;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

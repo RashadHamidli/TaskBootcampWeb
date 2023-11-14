@@ -12,7 +12,6 @@ import com.company.exceptions.MyExceptionHandler;
 import com.company.service.inter.UserService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -95,8 +94,8 @@ public class UserServiceImpl implements UserService {
                             task.setTaskName(taskRequest.getTaskName());
                         if (taskRequest.getDeadline() != null)
                             task.setDedline(taskRequest.getDeadline());
-                        if (taskRequest.getText() != null && !taskRequest.getText().isEmpty())
-                            task.setText(taskRequest.getText());
+                        if (taskRequest.getTaskText() != null && !taskRequest.getTaskText().isEmpty())
+                            task.setTaskText(taskRequest.getTaskText());
                         task.setUser(user);
                         Task updatedTask = taskRepository.save(task);
                         return new TaskRespons(updatedTask);

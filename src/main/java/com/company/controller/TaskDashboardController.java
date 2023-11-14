@@ -35,7 +35,6 @@ import java.io.IOException;
 public class TaskDashboardController {
     private final TaskService taskService;
     private final UserServiceImpl userService;
-    private final UserRepository userRepository;
     private static final Logger log = LoggerFactory.getLogger(TaskDashboardController.class);
 
     @GetMapping("/tasksdashboard")

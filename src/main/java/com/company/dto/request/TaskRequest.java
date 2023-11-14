@@ -10,7 +10,7 @@ import java.sql.Date;
 public class TaskRequest {
     private String taskName;
     private Date deadline;
-    private String text;
+    private String taskText;
     private Long userId;
 
 
@@ -18,7 +18,7 @@ public class TaskRequest {
         Task task = new Task();
         task.setTaskName(taskRequest.taskName);
         task.setDedline(taskRequest.deadline);
-        task.setText(taskRequest.text);
+        task.setTaskText(taskRequest.taskText);
         return task;
     }
 }
