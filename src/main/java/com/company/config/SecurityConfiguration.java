@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -29,17 +30,32 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserServiceImpl userServiceImpl;
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/**")
+                        .requestMatchers("/")
                         .permitAll()
+//                        .requestMatchers("/login/**")
+//                        .permitAll()
+//                        .requestMatchers("/error")
+//                        .permitAll()
+//                        .requestMatchers("/css/**", "/js/**", "/img/**")
+//                        .permitAll()
                         .anyRequest()
                         .authenticated())
+//                .formLogin((form) -> form
+//                        .loginPage("/login")
+//                        .loginProcessingUrl("/")
+//                        .defaultSuccessUrl("/")
+//                        .permitAll()
+//                )
+//                .logout(LogoutConfigurer::permitAll)
+//                .exceptionHandling(ex -> ex.authenticationEntryPoint(point))
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-                .authenticationProvider(authenticationProvider()).addFilterBefore(
-                        jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .authenticationProvider(authenticationProvider())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 
