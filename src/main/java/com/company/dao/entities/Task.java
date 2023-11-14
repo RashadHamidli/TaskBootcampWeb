@@ -20,7 +20,7 @@ public class Task {
     private Long id;
     @Column(name = "name", nullable = false)
     private String taskName;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dedline;
     @Column(nullable = false)

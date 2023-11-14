@@ -26,6 +26,7 @@ public class JwtServiceImpl implements JwtService {
     public String extractUserName(String token) {
         return extractClaim(token, Claims::getSubject);
     }
+
     @Override
     public Long extractUserId(String token) {
         return Long.parseLong(extractClaim(token, Claims::getId));
@@ -53,7 +54,7 @@ public class JwtServiceImpl implements JwtService {
                 .setClaims(extraClaims)
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + expireSeconds))
+                .setExpiration(new Date(System.currentTimeMillis() + expireSeconds * 1000))
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
     }
 

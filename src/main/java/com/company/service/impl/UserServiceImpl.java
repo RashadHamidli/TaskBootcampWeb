@@ -106,4 +106,8 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(MyExceptionHandler::new);
     }
 
+    public Long findByUserId(String loggedInUserEmail) {
+        User user = userRepository.findByEmail(loggedInUserEmail);
+        return user.getId();
+    }
 }

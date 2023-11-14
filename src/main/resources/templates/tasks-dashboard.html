@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-    <title>Tasks dashboard</title>
+    <title>Tasks Dashboard</title>
 </head>
 <body>
 <header class="main-header">
@@ -121,6 +121,7 @@
                 <a href="#" class="task-btn">Complete</a>
             </div>
         </div>
+
         <form action="/tasksdashboard" method="post" class="tasks-dashboard-form" id="tasks-dashboard-form">
             <div class="task-card-section">
                 <h3 class="task-card-title">New Task</h3>
@@ -157,11 +158,13 @@
                         <p class="task-card-text">
                         <div class="task-card-form-row">
                             <label class="task-card-label"></label>
-                            <textarea name="text" class="text-card-input" placeholder="Write your text here..."></textarea>
+                            <textarea name="text" class="text-card-input"
+                                      placeholder="Write your text here..."></textarea>
                         </div>
                         </p>
-                        <input type="hidden" name="Authorization" th:value="'Bearer ' + ${token}" />
-                        <button type="submit" class="btn btn-dark">Save</button>
+                        <input type="hidden" id="token" th:value="${token}"/>
+                        <!-- Save butonu eklendi ve onclick ile submitForm fonksiyonu çağrıldı -->
+                        <button type="button" onclick="submitForm()" class="btn btn-dark">Save</button>
                     </div>
                 </div>
             </div>
@@ -169,5 +172,42 @@
 
     </div>
 </section>
+
+<script>
+    // JavaScript ve AJAX ile formu gönderen fonksiyon
+    function submitForm() {
+        // JavaScript ile token'ı al
+        var token = document.getElementById("token").value;
+
+        // Token'ı localStorage'a ekle
+        localStorage.setItem('token', token);
+
+        // Token'i al
+        var token = localStorage.getItem('token');
+
+        // AJAX isteği oluştur
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/tasksdashboard", true);
+
+        // HTTP başlığına token'ı ekle
+        xhr.setRequestHeader("Authorization", "Bearer " + token);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        // Form verilerini al
+        var formData = new FormData(document.getElementById("tasks-dashboard-form"));
+
+        // Form verilerini gönder
+        xhr.send(new URLSearchParams(formData));
+
+        // Gerekirse, istek tamamlandığında bir işlem yapabilirsiniz
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log("Başarıyla gönderildi.");
+            } else {
+                console.error("Hata oluştu.");
+            }
+        };
+    }
+</script>
 </body>
 </html>

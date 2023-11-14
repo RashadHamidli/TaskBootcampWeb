@@ -1,6 +1,8 @@
 package com.company.controller;
 
 import com.company.dao.entities.User;
+import com.company.dao.repository.TaskRepository;
+import com.company.dao.repository.UserRepository;
 import com.company.dto.request.TaskRequest;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.JwtService;
@@ -30,9 +32,10 @@ import java.io.IOException;
 
 @Controller
 @RequiredArgsConstructor
-public class TaskDashboardController {//anonymousUser
-    private final UserServiceImpl userServiceImpl;
-    private final JwtService jwtService;
+public class TaskDashboardController {
+    private final TaskService taskService;
+    private final UserServiceImpl userService;
+    private final UserRepository userRepository;
     private static final Logger log = LoggerFactory.getLogger(TaskDashboardController.class);
 
     @GetMapping("/tasksdashboard")
@@ -43,12 +46,9 @@ public class TaskDashboardController {//anonymousUser
     @PostMapping("/tasksdashboard")
     public ModelAndView taskdashboard(TaskRequest request) {
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println("authentication=" + authentication);
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        System.out.println(principal);
         String loggedInUserEmail = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println("Daxil olan istifadəçinin emaili: " + loggedInUserEmail);
+        Long userId = userService.findByUserId(loggedInUserEmail);
+        taskService.createTaskForUser(userId, request);
 
         return new ModelAndView("/tasks-dashboard");
     }
