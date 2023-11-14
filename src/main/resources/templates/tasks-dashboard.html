@@ -133,11 +133,11 @@
                         <div class="task-card-img _1"></div>
                         <div class="task-card-form">
                             <div class="task-card-form-row">
-                                <label for="task-card-date" class="task-card-label">Deadline to:</label>
-                                <input name="dedline" type="date" value="2020-06-30" class="task-card-input">
+                                <label class="task-card-label">Deadline to:</label>
+                                <input name="deadline" type="date" placeholder="2020-06-30" class="task-card-input">
                             </div>
                             <div class="task-card-form-row">
-                                <label for="name-task" class="task-card-label">Name Task</label>
+                                <label class="task-card-label">Name Task</label>
                                 <input name="taskName" type="text" placeholder="Task 002" class="task-card-input">
                             </div>
                         </div>
@@ -161,8 +161,7 @@
                         <p class="task-card-text">
                         <div class="task-card-form-row">
                             <label class="task-card-label"></label>
-                            <textarea name="text" class="text-card-input"
-                                      placeholder="Write your text here..."></textarea>
+                            <textarea name="text" class="text-card-input" placeholder="Write your text here..."></textarea>
                         </div>
                         </p>
                         <input type="hidden" id="token" th:value="${token}"/>
