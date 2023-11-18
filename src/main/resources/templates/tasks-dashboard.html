@@ -49,25 +49,25 @@
     <div class="main-header-wrapper">
         <label class="main-header-search-wrapper">
             <input type="search" class="main-header-search" placeholder="Search">
-            <img src="/img/search-icon.svg" alt="Axtarış Nişanı">
+            <img src="/img/search-icon.svg" alt="search">
         </label>
         <div class="main-header-profile-wrapper">
             <div class="main-header-profile-credentials">
                 <span class="main-header-profile-welcome">Welcome,</span>
                 <span class="main-header-username">Name Surname</span>
             </div>
-            <img class="main-header-user-icon" src="/img/user-icon-with-background.svg" alt="İstifadəçi Nişanı">
+            <img class="main-header-user-icon" src="/img/user-icon-with-background.svg" alt="user">
             <div class="hidden-accordion-wrapper">
                 <ul class="hidden-accordion">
                     <li class="hidden-accordion-item"><a href="./tasks-archive.html" class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="./img/archive-icon.svg" alt="İstifadəçi Nişanı">Archive</a>
+                            class="hidden-accordion-item-image" src="./img/archive-icon.svg" alt="user">Archive</a>
                     </li>
                     <li class="hidden-accordion-item"><a href="./tasks-dashboard.html"
                                                          class="hidden-accordion-item-link"><img
                             class="hidden-accordion-item-image" src="./img/favourite-icon.svg" alt="Sevimli Nişan">My Tasks</a></li>
                     <li class="hidden-accordion-item"><a href="./login.html" class="hidden-accordion-item-link"><img
                             class="hidden-accordion-item-image" src="./img/log-out-icon.svg"
-                            alt="Çıxış Nişanı">Exit</a>
+                            alt="exit">Exit</a>
                     </li>
                 </ul>
             </div>
@@ -125,11 +125,11 @@
                     <div class="task-card-img _1"></div>
                     <div class="task-card-form">
                         <div class="task-card-form-row">
-                            <label class="task-card-label">Bitmə tarixinə:</label>
-                            <input name="task-card-date" type="date" id="taskDetailDate" class="task-card-input">
+                            <label class="task-card-label">Deadline:</label>
+                            <input name="task-card-date" type="text" id="taskDetailDate" class="task-card-input">
                         </div>
                         <div class="task-card-form-row">
-                            <label class="task-card-label">Tapşırıq Adı</label>
+                            <label class="task-card-label">Task Name</label>
                             <input name="name-task" type="text" id="taskDetailName" class="task-card-input"
                                    placeholder="Tapşırıq 002" disabled>
                         </div>
@@ -137,23 +137,23 @@
                     <div class="task-card-actions">
                         <a href="#" class="task-card-actions-item">
                             <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
-                            Paylaş
+                            share
                         </a>
                         <a href="#" class="task-card-actions-item">
                             <img src="/img/bell.png" alt="" class="task-card-actions-icon">
-                            Əhəmiyyətli olanlara əlavə et
+                            add
                         </a>
                         <a href="#" class="task-card-actions-item">
                             <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
-                            Sil
+                            delete
                         </a>
                     </div>
                 </div>
                 <div class="task-card-right-col">
-                    <h4 class="task-card-header">Tapşırıq Təsviri</h4>
+                    <h4 class="task-card-header">Task Description</h4>
                     <p class="task-card-text" id="taskDetailText">
                     </p>
-                    <a href="#" class="btn btn-dark btn-task-card">Yadda Saxla</a>
+                    <a href="#" class="btn btn-dark btn-task-card">Complete</a>
                 </div>
             </div>
         </div>
