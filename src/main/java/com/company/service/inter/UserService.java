@@ -12,6 +12,7 @@ public interface UserService {
     UserDetailsService userDetailsService();
 
     List<UserRespons> getAllUser();
+    UserRespons userNameAndSurname(String email);
 
     UserRespons updateUser(Long userId, UserRequest userRequest);
 

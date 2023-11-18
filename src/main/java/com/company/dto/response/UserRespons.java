@@ -14,6 +14,10 @@ public class UserRespons {
     private String email;
     private List<TaskRespons> taskList;
 
+    public UserRespons(User user) {
+        this.name = user.getFirstName();
+        this.surname = user.getLastName();
+    }
     public UserRespons(User user, List<TaskRespons> tasks) {
         this.id = user.getId();
         this.name = user.getFirstName();

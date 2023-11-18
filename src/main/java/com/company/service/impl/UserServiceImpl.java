@@ -51,6 +51,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserRespons userNameAndSurname(String email) {
+        User user = userRepository.findNameAndSurnameByEmail(email);
+        return new UserRespons(user);
+    }
+
+    @Override
     public UserRespons updateUser(Long userId, UserRequest userRequest) {
         return userRepository.findById(userId)
                 .map(foundedUser -> {

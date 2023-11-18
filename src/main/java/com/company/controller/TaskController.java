@@ -37,17 +37,8 @@ public class TaskController {
         model.addAttribute("token", token);
         String email = jwtService.extractUserName(token);
         Long userId = userService.findByUserId(email);
-
-        System.out.println("User ID: " + userId);
-        System.out.println("Task Request: " + request.toString());
-
         taskService.createTaskForUser(userId, request);
-
-        System.out.println("Task created successfully!");
-
         ModelAndView modelAndView = new ModelAndView("tasks-dashboard");
-        System.out.println("ModelAndView URL: " + modelAndView.getViewName());
-
         return modelAndView;
     }
 }
