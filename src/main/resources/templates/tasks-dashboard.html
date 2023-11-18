@@ -63,19 +63,19 @@
             </div>
         </div>
 
-        <div id="tasksList" class="tasks-list">
-            <div th:each="task : ${tasks}" class="task">
-                <h4 class="task-title" th:text="${task.taskName}"></h4>
-                <p class="task-deadline">
-                    Deadline to: <span class="task-deadline-date"
+        <div id="tasksList" class="tasks-list1">
+            <div th:each="task : ${tasks}" class="task1">
+                <h4 class="task-title1" th:text="${task.taskName}"></h4>
+                <p class="task-deadline1">
+                    Deadline to: <span class="task-deadline-date1"
                                        th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}"></span>
                 </p>
-                <p class="task-description" th:text="${task.taskText}"></p>
-                <div class="task-icons">
-                    <img class="task-icons-item" src="/img/bell.png" alt="bell">
-                    <img class="task-icons-item" src="/img/trash-bin.png" alt="bell">
+                <p class="task-description1" th:text="${task.taskText}"></p>
+                <div class="task-icons-img1">
+                    <img class="task-icons-img1" src="/img/bell.png" alt="bell">
+                    <img class="task-icons-img1" src="/img/trash-bin.png" alt="bell">
                 </div>
-                <a href="#" class="task-btn">Complete</a>
+                <a href="#" class="task-btn1">Complete</a>
             </div>
             <div class="task-card-section">
                 <h3 class="task-card-title">Task 002</h3>
