@@ -55,6 +55,6 @@ public class TaskDashboardController {
         List<TaskRespons> tasks = taskService.getAllTasksById(userId);
         System.out.println(tasks);
         model.addAttribute("tasks", tasks);
-        return "tasksdashboard";
+        return "tasks-dashboard";
     }
 }
