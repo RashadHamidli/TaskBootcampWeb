@@ -64,7 +64,8 @@
                     </li>
                     <li class="hidden-accordion-item"><a href="./tasks-dashboard.html"
                                                          class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="./img/favourite-icon.svg" alt="Sevimli Nişan">My Tasks</a></li>
+                            class="hidden-accordion-item-image" src="./img/favourite-icon.svg" alt="Sevimli Nişan">My
+                        Tasks</a></li>
                     <li class="hidden-accordion-item"><a href="./login.html" class="hidden-accordion-item-link"><img
                             class="hidden-accordion-item-image" src="./img/log-out-icon.svg"
                             alt="exit">Exit</a>
@@ -84,7 +85,7 @@
                     <label class="tasks-filter-label">Filter</label>
                     <select class="tasks-filter-list" name="task-type" id="">
                         <option class="tasks-filter-item" value="silinmiş">Deleted</option>
-                        <option class="tasks-filter-item" value="keçik">All</option>
+                        <option class="tasks-filter-item" value="keçik">Important</option>
                         <option class="tasks-filter-item" value="bugün">Today</option>
                         <option class="tasks-filter-item" value="tamam">Complete</option>
                     </select>
@@ -99,9 +100,8 @@
         <div id="tasksList" class="tasks-list">
             <div th:each="task : ${tasks}" class="task" onclick="showTaskDetails(this)">
                 <h4 class="task-titlet" th:text="${task.taskName}"></h4>
-                <p class="task-deadlinet">
-                    Deadline: <span class="task-deadline-datet"
-                                          th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}"></span>
+                <br>
+                <p class="task-deadline-datet" th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}">
                 </p>
                 <br>
                 <p class="task-description" th:text="${task.taskText}"></p>
@@ -126,33 +126,31 @@
                     <div class="task-card-form">
                         <div class="task-card-form-row">
                             <label class="task-card-label">Deadline:</label>
-                            <input name="task-card-date" type="text" id="taskDetailDate" class="task-card-input">
+                            <input name="task-card-date" type="text" id="taskDetailDate" class="task-card-input" value="">
                         </div>
                         <div class="task-card-form-row">
                             <label class="task-card-label">Task Name</label>
-                            <input name="name-task" type="text" id="taskDetailName" class="task-card-input"
-                                   placeholder="Tapşırıq 002" disabled>
+                            <input name="name-task" type="text" id="taskDetailName" class="task-card-input" placeholder="Task 002" value="" disabled>
                         </div>
                     </div>
                     <div class="task-card-actions">
                         <a href="#" class="task-card-actions-item">
                             <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
-                            share
+                            Share
                         </a>
                         <a href="#" class="task-card-actions-item">
                             <img src="/img/bell.png" alt="" class="task-card-actions-icon">
-                            add
+                            Add to important
                         </a>
                         <a href="#" class="task-card-actions-item">
                             <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
-                            delete
+                            Delete
                         </a>
                     </div>
                 </div>
                 <div class="task-card-right-col">
                     <h4 class="task-card-header">Task Description</h4>
-                    <p class="task-card-text" id="taskDetailText">
-                    </p>
+                    <p class="task-card-text" id="taskDetailText"></p>
                     <a href="#" class="btn btn-dark btn-task-card">Complete</a>
                 </div>
             </div>
@@ -167,7 +165,7 @@
         tasks.forEach(function (task) {
             task.addEventListener('click', function () {
                 var taskTitle = task.querySelector('.task-titlet').textContent;
-                var taskDeadline = task.querySelector('.task-deadlinet').textContent;
+                var taskDeadline = task.querySelector('.task-deadline-datet').textContent;
                 var taskDescription = task.querySelector('.task-description').textContent;
 
                 showTaskDetails(taskTitle, taskDeadline, taskDescription);
@@ -188,16 +186,12 @@
         modalName.value = taskTitle;
         modalText.textContent = taskDescription;
 
-        console.log("modalTitle: "+ modalTitle);
-        console.log("modalDeadline: "+ modalDeadline);
-        console.log("modalName: "+ modalName);
-        console.log("modalText: "+ modalText);
-
         modal.style.display = 'block';
 
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
+                document.body.classList.remove('modal-open');
             }
         };
         document.body.classList.add('modal-open');
@@ -206,7 +200,6 @@
     function closeModal() {
         var modal = document.getElementById('taskDetailsModal');
         modal.style.display = 'none';
-
         document.body.classList.remove('modal-open');
     }
 </script>
