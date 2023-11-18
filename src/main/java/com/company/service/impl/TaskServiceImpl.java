@@ -9,7 +9,9 @@ import com.company.exceptions.MyExceptionHandler;
 import com.company.service.inter.TaskService;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,6 +26,13 @@ public class TaskServiceImpl implements TaskService {
     @Override
     public List<TaskRespons> getAllTasks() {
         return taskRepository.findAll().stream().map(TaskRespons::new).collect(Collectors.toList());
+    }
+    public List<TaskRespons> getAllTasksById(Long userId) {
+        List<Task> tasks = taskRepository.findByUserId(userId);
+        List<TaskRespons> taskResponsList = tasks.stream()
+                .map(TaskRespons::new)
+                .collect(Collectors.toList());
+        return taskResponsList;
     }
     @Override
     public TaskRespons getTaskById(Long taskId) {
