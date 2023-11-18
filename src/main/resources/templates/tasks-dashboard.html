@@ -155,7 +155,6 @@
                 <div class="task-card-right-col">
                     <h4 class="task-card-header">Task Description</h4>
                     <p class="task-card-text" id="taskDetailText">
-                        <!-- Task təsviri burada göstəriləcək -->
                     </p>
                     <a href="#" class="btn btn-dark btn-task-card">Save</a>
                 </div>
@@ -173,53 +172,40 @@
                 var taskDeadline = task.querySelector('.task-deadlinet').innerText;
                 var taskDescription = task.querySelector('.task-description').innerText;
 
-                console.log("1. taskTitle: "+taskTitle)
-                console.log("2. taskDeadline: "+taskDeadline)
-                console.log("3. taskDescription: "+taskDescription)
-
-                // Task detallarını göstermek için fonksiyonu çağırıyoruz
                 showTaskDetails(taskTitle, taskDeadline, taskDescription);
             });
         });
     });
 
     function showTaskDetails(taskTitle, taskDeadline, taskDescription) {
-        // Modal penceresini alıyoruz
         var modal = document.getElementById('taskDetailsModal');
 
-        // Modal penceresinin içindeki bilgileri dolduruyoruz
-        var modalTitle = modal.querySelector('.task-card-title');
-        var modalDeadline = modal.querySelector('.task-card-input[name="task-card-date"]');
-        var modalDescription = modal.querySelector('.task-card-text');
-
-        // console.log("1. modalTitle: "+modalTitle)
-        // console.log("2. modalDeadline: "+modalDeadline)
-        // console.log("3. modalDescription: "+modalDescription)
+        var modalTitle = modal.querySelector('#taskDetailName');
+        var modalDeadline = modal.querySelector('#taskDetailDate');
+        var modalDescription = modal.querySelector('#taskDetailText');
 
         modalTitle.innerText = taskTitle;
-        modalDeadline.value = taskDeadline;
+        modalDeadline.innerText = taskDeadline;
         modalDescription.innerText = taskDescription;
 
-        // Modal'ı göstermek için class ekliyoruz
+        console.log("modalTitle: " + modalTitle)
+        console.log("modalDeadline: " + modalDeadline)
+        console.log("modalDescription: " + modalDescription)
+
         modal.style.display = 'block';
 
-        // Modal penceresi dışında bir yere tıklandığında, modali kapat
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
         };
-
-        // Modal gösterildiğinde body elementine "modal-open" class'ını ekliyoruz
         document.body.classList.add('modalt-open');
     }
 
-    // Modal'ı kapatmak için
     function closeModal() {
         var modal = document.getElementById('taskDetailsModal');
         modal.style.display = 'none';
 
-        // Modal kapatıldığında body elementinden "modal-open" class'ını siliyoruz
         document.body.classList.remove('modalt-open');
     }
 </script>
