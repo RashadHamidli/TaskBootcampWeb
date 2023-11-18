@@ -70,6 +70,7 @@
                     Deadline to: <span class="task-deadline-date"
                                        th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}"></span>
                 </p>
+                <br>
                 <p class="task-description" th:text="${task.taskText}"></p>
                 <div class="task-icons">
                     <img class="task-icons-item" src="/img/bell.png" alt="bell">
