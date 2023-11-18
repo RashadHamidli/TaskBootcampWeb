@@ -153,5 +153,29 @@
 
     </div>
 </section>
+<script>
+    fetch('/api/tasks/all')
+        .then(response => response.json())
+        .then(tasks => {
+            const tasksList = document.getElementById('tasksList');
+
+            tasks.forEach(task => {
+                const taskElement = document.createElement('div');
+                taskElement.classList.add('task');
+
+                taskElement.innerHTML = `
+                    <h4 class="task-title">${task.title}</h4>
+                    <p class="task-start-time">${task.startTime}</p>
+                    <p class="task-deadline">Deadline to: <span class="task-deadline-date">${task.deadline}</span></p>
+                    <p class="task-description">${task.description}</p>
+                    <!-- ... Other task details ... -->
+                `;
+
+                tasksList.appendChild(taskElement);
+            });
+        })
+        .catch(error => console.error('Error fetching tasks:', error));
+</script>
+
 </body>
 </html>
