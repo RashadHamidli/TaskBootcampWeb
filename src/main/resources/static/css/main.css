@@ -233,14 +233,14 @@ body {
     transition: 0.3s;
 }
 
-.task-title {
+.task-titlet {
     font-size: 1.5em; /* 37px-ə uyğun olaraq tənzimlənmişdən fərqli olaraq, hər hansı bir qeyd olmadıqda istifadə olunan ən ümumi ölçüdür */
     font-weight: 500;
     color: #333;
 }
 
 .task-start-time,
-.task-deadline,
+.task-deadlinet,
 .task-description {
     white-space: pre-line;
     overflow: hidden;
@@ -250,7 +250,7 @@ body {
     -webkit-box-orient: vertical;
 }
 
-.task-deadline-date {
+.task-deadline-datet {
     color: green;
 }
 

@@ -101,9 +101,9 @@
 
         <div id="tasksList" class="tasks-list" onclick="showTaskDetails(this)">
             <div th:each="task : ${tasks}" class="task">
-                <h4 class="task-title" th:text="${task.taskName}"></h4>
-                <p class="task-deadline">
-                    Deadline to: <span class="task-deadline-date"
+                <h4 class="task-titlet" th:text="${task.taskName}"></h4>
+                <p class="task-deadlinet">
+                    Deadline to: <span class="task-deadline-datet"
                                        th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}"></span>
                 </p>
                 <br>
@@ -169,54 +169,59 @@
 
         tasks.forEach(function (task) {
             task.addEventListener('click', function () {
-                var taskTitle = task.querySelector('.task-title').innerText;
-                var taskDeadline = task.querySelector('.task-deadline-date').innerText;
+                var taskTitle = task.querySelector('.task-titlet').innerText;
+                var taskDeadline = task.querySelector('.task-deadlinet').innerText;
                 var taskDescription = task.querySelector('.task-description').innerText;
 
-                // Task detallarını göstərmək üçün funksiyanı çağırırıq
+                console.log("1. taskTitle: "+taskTitle)
+                console.log("2. taskDeadline: "+taskDeadline)
+                console.log("3. taskDescription: "+taskDescription)
+
+                // Task detallarını göstermek için fonksiyonu çağırıyoruz
                 showTaskDetails(taskTitle, taskDeadline, taskDescription);
             });
         });
     });
 
     function showTaskDetails(taskTitle, taskDeadline, taskDescription) {
-        // Modal pəncərəni əldə edirik
+        // Modal penceresini alıyoruz
         var modal = document.getElementById('taskDetailsModal');
 
-        // Modal pəncərənin içindəki məlumatları doldururuq
+        // Modal penceresinin içindeki bilgileri dolduruyoruz
         var modalTitle = modal.querySelector('.task-card-title');
-        var modalDeadline = modal.querySelector('input[name="task-card-date"]');
+        var modalDeadline = modal.querySelector('.task-card-input[name="task-card-date"]');
         var modalDescription = modal.querySelector('.task-card-text');
+
+        // console.log("1. modalTitle: "+modalTitle)
+        // console.log("2. modalDeadline: "+modalDeadline)
+        // console.log("3. modalDescription: "+modalDescription)
 
         modalTitle.innerText = taskTitle;
         modalDeadline.value = taskDeadline;
         modalDescription.innerText = taskDescription;
 
-        // Modalı göstərmək üçün class əlavə edirik
+        // Modal'ı göstermek için class ekliyoruz
         modal.style.display = 'block';
 
-        // Modal pəncərəsindən kənarda bir yerdə klik olunsa, modalı gizlə
+        // Modal penceresi dışında bir yere tıklandığında, modali kapat
         window.onclick = function (event) {
             if (event.target === modal) {
                 modal.style.display = 'none';
             }
         };
 
-        // Modalı göstərdikdə body elementinə "modal-open" classını əlavə edirik
+        // Modal gösterildiğinde body elementine "modal-open" class'ını ekliyoruz
         document.body.classList.add('modalt-open');
     }
 
-    // Modalı gizləmək üçün
+    // Modal'ı kapatmak için
     function closeModal() {
         var modal = document.getElementById('taskDetailsModal');
         modal.style.display = 'none';
 
-        // Modalı gizlədikdə body elementindən "modal-open" classını silirik
+        // Modal kapatıldığında body elementinden "modal-open" class'ını siliyoruz
         document.body.classList.remove('modalt-open');
     }
-    console.log("Title:", taskTitle);
-    console.log("Deadline:", taskDeadline);
-    console.log("Description:", taskDescription);
 </script>
 
 </body>
