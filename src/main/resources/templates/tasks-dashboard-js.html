@@ -115,97 +115,97 @@
     </div>
 </section>
 
-<div id="taskDetailsModal" class="modalt">
-    <div class="modalt-content">
-        <span class="closet" onclick="closeModal()">&times;</span>
-        <div class="task-card-section">
-            <h3 class="task-card-title" id="taskDetailTitle">Task 002</h3>
-            <div class="task-card">
-                <div class="task-card-left-col">
-                    <div class="task-card-img _1"></div>
-                    <div class="task-card-form">
-                        <div class="task-card-form-row">
-                            <label class="task-card-label">Deadline:</label>
-                            <input name="task-card-date" type="text" id="taskDetailDate" class="task-card-input"
-                                   value="">
-                        </div>
-                        <div class="task-card-form-row">
-                            <label class="task-card-label">Task Name</label>
-                            <input name="name-task" type="text" id="taskDetailName" class="task-card-input"
-                                   placeholder="Task 002" value="" disabled>
-                        </div>
-                    </div>
-                    <div class="task-card-actions">
-                        <a href="#" class="task-card-actions-item">
-                            <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
-                            Share
-                        </a>
-                        <a href="#" class="task-card-actions-item">
-                            <img src="/img/bell.png" alt="" class="task-card-actions-icon">
-                            Add to important
-                        </a>
-                        <a href="#" class="task-card-actions-item">
-                            <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
-                            Delete
-                        </a>
-                    </div>
-                </div>
-                <div class="task-card-right-col">
-                    <h4 class="task-card-header">Task Description</h4>
-                    <p class="task-card-text" id="taskDetailText"></p>
-                    <a href="#" class="btn btn-dark btn-task-card">Complete</a>
-                    <a href="#" class="btn btn-dark btn-task-card" onclick="closeModal()">Close</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<!--<div id="taskDetailsModal" class="modalt">-->
+<!--    <div class="modalt-content">-->
+<!--        <span class="closet" onclick="closeModal()">&times;</span>-->
+<!--        <div class="task-card-section">-->
+<!--            <h3 class="task-card-title" id="taskDetailTitle">Task 002</h3>-->
+<!--            <div class="task-card">-->
+<!--                <div class="task-card-left-col">-->
+<!--                    <div class="task-card-img _1"></div>-->
+<!--                    <div class="task-card-form">-->
+<!--                        <div class="task-card-form-row">-->
+<!--                            <label class="task-card-label">Deadline:</label>-->
+<!--                            <input name="task-card-date" type="text" id="taskDetailDate" class="task-card-input"-->
+<!--                                   value="">-->
+<!--                        </div>-->
+<!--                        <div class="task-card-form-row">-->
+<!--                            <label class="task-card-label">Task Name</label>-->
+<!--                            <input name="name-task" type="text" id="taskDetailName" class="task-card-input"-->
+<!--                                   placeholder="Task 002" value="" disabled>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="task-card-actions">-->
+<!--                        <a href="#" class="task-card-actions-item">-->
+<!--                            <img src="/img/arrow.png" alt="" class="task-card-actions-icon">-->
+<!--                            Share-->
+<!--                        </a>-->
+<!--                        <a href="#" class="task-card-actions-item">-->
+<!--                            <img src="/img/bell.png" alt="" class="task-card-actions-icon">-->
+<!--                            Add to important-->
+<!--                        </a>-->
+<!--                        <a href="#" class="task-card-actions-item">-->
+<!--                            <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">-->
+<!--                            Delete-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="task-card-right-col">-->
+<!--                    <h4 class="task-card-header">Task Description</h4>-->
+<!--                    <p class="task-card-text" id="taskDetailText"></p>-->
+<!--                    <a href="#" class="btn btn-dark btn-task-card">Complete</a>-->
+<!--                    <a href="#" class="btn btn-dark btn-task-card" onclick="closeModal()">Close</a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var tasks = document.querySelectorAll('.task');
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', function () {-->
+<!--        var tasks = document.querySelectorAll('.task');-->
 
-        tasks.forEach(function (task) {
-            task.addEventListener('click', function () {
-                var taskTitle = task.querySelector('.task-titlet').textContent;
-                var taskDeadline = task.querySelector('.task-deadline-datet').textContent;
-                var taskDescription = task.querySelector('.task-description').textContent;
+<!--        tasks.forEach(function (task) {-->
+<!--            task.addEventListener('click', function () {-->
+<!--                var taskTitle = task.querySelector('.task-titlet').textContent;-->
+<!--                var taskDeadline = task.querySelector('.task-deadline-datet').textContent;-->
+<!--                var taskDescription = task.querySelector('.task-description').textContent;-->
 
-                showTaskDetails(taskTitle, taskDeadline, taskDescription);
-            });
-        });
-    });
+<!--                showTaskDetails(taskTitle, taskDeadline, taskDescription);-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
 
-    function showTaskDetails(taskTitle, taskDeadline, taskDescription) {
-        var modal = document.getElementById('taskDetailsModal');
+<!--    function showTaskDetails(taskTitle, taskDeadline, taskDescription) {-->
+<!--        var modal = document.getElementById('taskDetailsModal');-->
 
-        var modalTitle = modal.querySelector('#taskDetailTitle');
-        var modalDeadline = modal.querySelector('#taskDetailDate');
-        var modalName = modal.querySelector('#taskDetailName');
-        var modalText = modal.querySelector('#taskDetailText');
+<!--        var modalTitle = modal.querySelector('#taskDetailTitle');-->
+<!--        var modalDeadline = modal.querySelector('#taskDetailDate');-->
+<!--        var modalName = modal.querySelector('#taskDetailName');-->
+<!--        var modalText = modal.querySelector('#taskDetailText');-->
 
-        modalTitle.textContent = taskTitle;
-        modalDeadline.value = taskDeadline;
-        modalName.value = taskTitle;
-        modalText.textContent = taskDescription;
+<!--        modalTitle.textContent = taskTitle;-->
+<!--        modalDeadline.value = taskDeadline;-->
+<!--        modalName.value = taskTitle;-->
+<!--        modalText.textContent = taskDescription;-->
 
-        modal.style.display = 'block';
+<!--        modal.style.display = 'block';-->
 
-        window.onclick = function (event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-                document.body.classList.remove('modal-open');
-            }
-        };
-        document.body.classList.add('modal-open');
-    }
+<!--        window.onclick = function (event) {-->
+<!--            if (event.target === modal) {-->
+<!--                modal.style.display = 'none';-->
+<!--                document.body.classList.remove('modal-open');-->
+<!--            }-->
+<!--        };-->
+<!--        document.body.classList.add('modal-open');-->
+<!--    }-->
 
-    function closeModal() {
-        var modal = document.getElementById('taskDetailsModal');
-        modal.style.display = 'none';
-        document.body.classList.remove('modal-open');
-    }
-</script>
+<!--    function closeModal() {-->
+<!--        var modal = document.getElementById('taskDetailsModal');-->
+<!--        modal.style.display = 'none';-->
+<!--        document.body.classList.remove('modal-open');-->
+<!--    }-->
+<!--</script>-->
 
 </body>
 </html>
