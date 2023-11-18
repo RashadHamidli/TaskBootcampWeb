@@ -30,16 +30,30 @@ public class TaskController {
     public String task(HttpSession session, Model model) {
         UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
         model.addAttribute("userRespons", userResp);
+        String token = (String) session.getAttribute("token");
+        String email = jwtService.extractUserName(token);
+        Long userId = userService.findByUserId(email);
+        model.addAttribute("userId", userId);
         return "add-task";
     }
 
     @PostMapping
     public String addTask(HttpSession session, TaskRequest request, Model model) {
         String token = (String) session.getAttribute("token");
-        model.addAttribute("token", token);
         String email = jwtService.extractUserName(token);
         Long userId = userService.findByUserId(email);
+        model.addAttribute("userId", userId);
         taskService.createTaskForUser(userId, request);
         return "redirect:/tasksdashboard";
     }
+
 }
+//    @PostMapping
+//    public String addTask(HttpSession session, TaskRequest request, Model model) {
+//        String token = (String) session.getAttribute("token");
+//        model.addAttribute("token", token);
+//        String email = jwtService.extractUserName(token);
+//        Long userId = userService.findByUserId(email);
+//        taskService.createTaskForUser(userId, request);
+//        return "redirect:/tasksdashboard";
+//    }
