@@ -19,8 +19,8 @@
         </label>
         <div class="main-header-profile-wrapper">
             <div class="main-header-profile-credentials">
-                <span class="main-header-profile-welcome">Welcome,</span>
-                <span class="main-header-username">Sample User</span>
+                <span class="main-header-username" th:text="${userRespons.name}"></span>
+                <span class="main-header-username" th:text="${userRespons.surname}"></span>
             </div>
             <img class="main-header-user-icon" src="img/user-icon-with-background.svg" alt="User Icon">
             <div class="hidden-accordion-wrapper">

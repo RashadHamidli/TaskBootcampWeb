@@ -53,8 +53,8 @@
         </label>
         <div class="main-header-profile-wrapper">
             <div class="main-header-profile-credentials">
-                <span class="main-header-profile-welcome">Welcome,</span>
-                <span class="main-header-username">Name Surname</span>
+                <span class="main-header-username" th:text="${userRespons.name}"></span>
+                                <span class="main-header-username" th:text="${userRespons.surname}"></span>
             </div>
             <img class="main-header-user-icon" src="/img/user-icon-with-background.svg" alt="user">
             <div class="hidden-accordion-wrapper">
@@ -90,9 +90,9 @@
                         <option class="tasks-filter-item" value="tamam">Complete</option>
                     </select>
                 </form>
-                <form>
-                    <button type="button" onclick="location.href='/addtask'" class="btn btn-dark btn-add-task">Add Task
-                    </button>
+
+                <form action="/addtask" method="get">
+                    <button type="submit"  class="btn btn-dark btn-add-task">Add Task</button>
                 </form>
             </div>
         </div>

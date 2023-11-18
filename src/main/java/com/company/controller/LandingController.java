@@ -15,18 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/landing")
 public class LandingController {
-    private final JwtService jwtService;
-    private final UserService userService;
 
     @GetMapping()
     public String landing(HttpSession session, Model model) {
-        String token = (String) session.getAttribute("token");
-        System.out.println(token);
-        String email = jwtService.extractUserName(token);
-        System.out.println(email);
-        UserRespons userRespons = userService.userNameAndSurname(email);
-        System.out.println(userRespons);
-        model.addAttribute("userRespons", userRespons);
+        UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
+        model.addAttribute("userResp", userResp);
         return "landing";
     }
 

@@ -3,6 +3,7 @@ package com.company.controller;
 import com.company.config.AuthenticationFacade;
 import com.company.dto.request.TaskRequest;
 import com.company.dto.response.JwtAuthenticationResponse;
+import com.company.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.AuthenticationService;
@@ -24,21 +25,21 @@ public class TaskController {
     private final TaskService taskService;
     private final JwtServiceImpl jwtService;
     private final UserServiceImpl userService;
-    private final AuthenticationFacade authenticationFacade;
 
     @GetMapping()
-    public String task() {
+    public String task(HttpSession session, Model model) {
+        UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
+        model.addAttribute("userRespons", userResp);
         return "add-task";
     }
 
     @PostMapping
-    public ModelAndView addTask(HttpSession session, TaskRequest request, Model model) {
+    public String addTask(HttpSession session, TaskRequest request, Model model) {
         String token = (String) session.getAttribute("token");
         model.addAttribute("token", token);
         String email = jwtService.extractUserName(token);
         Long userId = userService.findByUserId(email);
         taskService.createTaskForUser(userId, request);
-        ModelAndView modelAndView = new ModelAndView("tasks-dashboard");
-        return modelAndView;
+        return "redirect:/tasksdashboard";
     }
 }

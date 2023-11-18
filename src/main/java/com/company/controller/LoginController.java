@@ -4,9 +4,11 @@ package com.company.controller;
 import com.company.dto.request.SignUpRequest;
 import com.company.dto.request.SigninRequest;
 import com.company.dto.response.JwtAuthenticationResponse;
+import com.company.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
 import com.company.service.inter.AuthenticationService;
 import com.company.service.inter.JwtService;
+import com.company.service.inter.UserService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,7 @@ import java.util.List;
 public class LoginController {
     private final AuthenticationService authenticationService;
     private final JwtServiceImpl jwtService;
+    private final UserService userService;
 
     @GetMapping
     public String login() {
@@ -36,7 +39,10 @@ public class LoginController {
         JwtAuthenticationResponse response = authenticationService.signin(request);
         session.setAttribute("token", response.getToken());
         model.addAttribute("token", response.getToken());
-        return "/landing";
+        String email = jwtService.extractUserName(response.getToken());
+        UserRespons userRespons = userService.userNameAndSurname(email);
+        session.setAttribute("userRespons", userRespons);
+        return "redirect:/landing";
     }
 
 }

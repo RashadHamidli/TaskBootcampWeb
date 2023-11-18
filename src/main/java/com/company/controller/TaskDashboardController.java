@@ -6,6 +6,7 @@ import com.company.dao.repository.TaskRepository;
 import com.company.dao.repository.UserRepository;
 import com.company.dto.request.TaskRequest;
 import com.company.dto.response.TaskRespons;
+import com.company.dto.response.UserRespons;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.JwtService;
 import com.company.service.inter.TaskService;
@@ -47,14 +48,12 @@ public class TaskDashboardController {
     @GetMapping("/tasksdashboard")
     public String getTasks(HttpSession session, Model model) {
         String token = (String) session.getAttribute("token");
-        System.out.println(token);
         String email = service.extractUserName(token);
-        System.out.println(email);
         Long userId = userService.findByUserId(email);
-        System.out.println(userId);
         List<TaskRespons> tasks = taskService.getAllTasksById(userId);
-        System.out.println(tasks);
         model.addAttribute("tasks", tasks);
+        UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
+        model.addAttribute("userRespons", userResp);
         return "tasks-dashboard";
     }
 }
