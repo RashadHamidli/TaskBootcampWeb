@@ -7,6 +7,42 @@
           rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
     <title>Tasks Dashboard</title>
+    <style>
+        /* Styling for the modal */
+        .modalt {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modalt-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .closet {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Styling to hide scrollbar when modal is open */
+        bodyt.modal-open {
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
 
@@ -79,8 +115,13 @@
                 <a href="#" class="task-btn">Complete</a>
             </div>
         </div>
-        <br>
-        <div class="task-card-section" id="taskDetails">
+
+    </div>
+</section>
+<div id="taskDetailsModal" class="modalt">
+    <div class="modalt-content">
+        <span class="closet" onclick="closeModal()">&times;</span>
+        <div class="task-card-section">
             <h3 class="task-card-title" id="taskDetailTitle">Task 002</h3>
             <div class="task-card">
                 <div class="task-card-left-col">
@@ -92,7 +133,8 @@
                         </div>
                         <div class="task-card-form-row">
                             <label class="task-card-label">Name Task</label>
-                            <input name="name-task" type="text" id="taskDetailName" class="task-card-input" placeholder="Task 002" disabled>
+                            <input name="name-task" type="text" id="taskDetailName" class="task-card-input"
+                                   placeholder="Task 002" disabled>
                         </div>
                     </div>
                     <div class="task-card-actions">
@@ -120,46 +162,62 @@
             </div>
         </div>
     </div>
-</section>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Bütün taskları seçirik
         var tasks = document.querySelectorAll('.task');
 
         tasks.forEach(function (task) {
-            // Hər bir taska click eventi əlavə edirik
             task.addEventListener('click', function () {
-                // Təsdiqlənmiş taskın məlumatlarını göstər
                 var taskTitle = task.querySelector('.task-title').innerText;
                 var taskDeadline = task.querySelector('.task-deadline-date').innerText;
                 var taskDescription = task.querySelector('.task-description').innerText;
 
-                // Detalları göstərmək üçün funksiyanı çağırırıq
+                // Task detallarını göstərmək üçün funksiyanı çağırırıq
                 showTaskDetails(taskTitle, taskDeadline, taskDescription);
             });
         });
     });
 
     function showTaskDetails(taskTitle, taskDeadline, taskDescription) {
-        // Əvvəlcə bütün detalları gizlə
-        var allDetails = document.querySelectorAll('.task-card-section');
-        allDetails.forEach(function (detail) {
-            detail.style.display = 'none';
-        });
+        // Modal pəncərəni əldə edirik
+        var modal = document.getElementById('taskDetailsModal');
 
-        // Sonra yalnız seçilmiş taskın detallarını göstər
-        var selectedDetail = document.getElementById('taskDetails');
-        selectedDetail.style.display = 'block';
+        // Modal pəncərənin içindəki məlumatları doldururuq
+        var modalTitle = modal.querySelector('.task-card-title');
+        var modalDeadline = modal.querySelector('input[name="task-card-date"]');
+        var modalDescription = modal.querySelector('.task-card-text');
 
-        // HTML-in içində task məlumatlarını doldur
-        var detailTitle = document.querySelector('.task-card-title');
-        var detailDeadline = document.querySelector('input[name="task-card-date"]');
-        var detailDescription = document.querySelector('.task-card-text');
+        modalTitle.innerText = taskTitle;
+        modalDeadline.value = taskDeadline;
+        modalDescription.innerText = taskDescription;
 
-        detailTitle.innerText = taskTitle;
-        detailDeadline.value = taskDeadline;
-        detailDescription.innerText = taskDescription;
+        // Modalı göstərmək üçün class əlavə edirik
+        modal.style.display = 'block';
+
+        // Modal pəncərəsindən kənarda bir yerdə klik olunsa, modalı gizlə
+        window.onclick = function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+
+        // Modalı göstərdikdə body elementinə "modal-open" classını əlavə edirik
+        document.body.classList.add('modalt-open');
     }
+
+    // Modalı gizləmək üçün
+    function closeModal() {
+        var modal = document.getElementById('taskDetailsModal');
+        modal.style.display = 'none';
+
+        // Modalı gizlədikdə body elementindən "modal-open" classını silirik
+        document.body.classList.remove('modalt-open');
+    }
+    console.log("Title:", taskTitle);
+    console.log("Deadline:", taskDeadline);
+    console.log("Description:", taskDescription);
 </script>
+
 </body>
 </html>
