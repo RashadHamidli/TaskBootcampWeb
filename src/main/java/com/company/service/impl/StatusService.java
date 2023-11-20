@@ -42,4 +42,7 @@ public class StatusService {
     public List<Status> getCompleteStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsComplete(taskId, true);
     }
+    public List<Status> getImportantStatusesForTask(List<Long> taskId) {
+        return statusRepository.findByTaskIdInAndIsImportant(taskId, true);
+    }
 }

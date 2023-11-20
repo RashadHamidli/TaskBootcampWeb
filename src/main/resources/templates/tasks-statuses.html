@@ -50,10 +50,10 @@
                 <form class="tasks-filter" action="" id="sort-tasks">
                     <label class="tasks-filter-label">Filter</label>
                     <select class="tasks-filter-list" name="task-type" id="">
-                        <option class="tasks-filter-item" value="silinmiş">Deleted</option>
-                        <option class="tasks-filter-item" value="keçik">Important</option>
-                        <option class="tasks-filter-item" value="bugün">Today</option>
-                        <option class="tasks-filter-item" value="tamam">Complete</option>
+                        <option class="tasks-filter-item" value="delete">Deleted</option>
+                        <option class="tasks-filter-item" value="important">Important</option>
+                        <option class="tasks-filter-item" value="Archive">Archive</option>
+                        <option class="tasks-filter-item" value="Complete">Complete</option>
                     </select>
                 </form>
 
@@ -64,7 +64,7 @@
         </div>
 
         <div id="tasksList" class="tasks-list">
-            <div th:each="status : ${deletedStatuses}" class="task">
+            <div th:each="status : ${statuses}" class="task">
                 <h4 class="task-titlet" th:text="${status.getTask().getTaskName()}"></h4>
                 <br>
                 <p class="task-deadline-datet" th:text="${#dates.format(status.getTask().getDedline(), 'dd.MM.yyyy')}"></p>
@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <div th:each="status : ${deletedStatuses}" th:id="'taskDetailModalEdit-' + ${status.getTask().getId()}" class="modalt">
+        <div th:each="status : ${statuses}" th:id="'taskDetailModalEdit-' + ${status.getTask().getId()}" class="modalt">
             <div class="modalt-content">
                 <span class="closet">&times;</span>
                 <form action="/task/edit" method="post">
@@ -128,7 +128,7 @@
         </div>
     </div>
 
-    <div th:each="status : ${deletedStatuses}" th:id="'taskDetailModalView-' + ${status.getTask().getId()}" class="modalt">
+    <div th:each="status : ${statuses}" th:id="'taskDetailModalView-' + ${status.getTask().getId()}" class="modalt">
         <div class="modalt-content">
             <span class="closet">&times;</span>
             <div class="task-card-section">

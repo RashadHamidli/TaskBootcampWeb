@@ -20,15 +20,15 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-public class TaskDeleteController {
+public class TaskImportantController {
     private final JwtService service;
     private final TaskService taskService;
     private final UserServiceImpl userService;
     private final StatusService statusService;
-    private static final Logger log = LoggerFactory.getLogger(TaskDeleteController.class);
+    private static final Logger log = LoggerFactory.getLogger(TaskImportantController.class);
 
 
-    @GetMapping("/tasksdelete")
+    @GetMapping("/tasksimportant")
     public String getTasks(HttpSession session, Model model) {
         String token = (String) session.getAttribute("token");
         String email = service.extractUserName(token);
@@ -37,7 +37,7 @@ public class TaskDeleteController {
         List<TaskRespons> userTasks = taskService.getAllTasksById(userId);
         List<Long> userTaskIds = userTasks.stream().map(TaskRespons::getId).collect(Collectors.toList());
 
-        List<Status> statuses = statusService.getDeletedStatusesForTask(userTaskIds);
+        List<Status> statuses = statusService.getImportantStatusesForTask(userTaskIds);
 
         model.addAttribute("statuses", statuses);
 

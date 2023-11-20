@@ -37,12 +37,12 @@ public class TaskArchiveController {
         List<TaskRespons> userTasks = taskService.getAllTasksById(userId);
         List<Long> userTaskIds = userTasks.stream().map(TaskRespons::getId).collect(Collectors.toList());
 
-        List<Status> deletedStatuses = statusService.getArchiveStatusesForTask(userTaskIds);
+        List<Status> statuses = statusService.getArchiveStatusesForTask(userTaskIds);
 
-        model.addAttribute("deletedStatuses", deletedStatuses);
+        model.addAttribute("statuses", statuses);
 
         UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
         model.addAttribute("userRespons", userResp);
-        return "tasks-archive";
+        return "tasks-statuses";
     }
 }
