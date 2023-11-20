@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -60,5 +61,21 @@ public class TaskController {
         statusService.isDelete(taskId, statusRequest);
         return "redirect:/tasksdashboard";
     }
+
+//    @PostMapping("/filterTasks")
+//    public String filterTasks(@RequestParam("task-type") String taskType) {
+//        switch (taskType) {
+//            case "delete":
+//                return "redirect:/tasksdelete";
+//            case "important":
+//                return "redirect:/tasksimportant";
+//            case "Archive":
+//                return "redirect:/tasksarchive";
+//            case "Complete":
+//                return "redirect:/taskscomplete";
+//            default:
+//                return "redirect:/tasksdelete";
+//        }
+//    }
 
 }

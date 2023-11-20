@@ -47,15 +47,27 @@
         <div class="tasks-caption">
             <h2 class="tasks-caption-title">Dashboard</h2>
             <div class="tasks-caption-actions">
-                <form class="tasks-filter" action="" id="sort-tasks">
+
+                <form class="tasks-filter" action="/status" method="post" id="sort-tasks">
                     <label class="tasks-filter-label">Filter</label>
-                    <select class="tasks-filter-list" name="task-type" id="">
+                    <select class="tasks-filter-list" name="task-type" id="filter-select">
                         <option class="tasks-filter-item" value="delete">Deleted</option>
                         <option class="tasks-filter-item" value="important">Important</option>
                         <option class="tasks-filter-item" value="Archive">Archive</option>
                         <option class="tasks-filter-item" value="Complete">Complete</option>
                     </select>
+                    <button type="submit" class="btn btn-dark btn-add-task">Filter</button>
                 </form>
+
+<!--                <form class="tasks-filter" action="" id="sort-tasks">-->
+<!--                    <label class="tasks-filter-label">Filter</label>-->
+<!--                    <select class="tasks-filter-list" name="task-type" id="">-->
+<!--                        <option class="tasks-filter-item" value="delete">Deleted</option>-->
+<!--                        <option class="tasks-filter-item" value="important">Important</option>-->
+<!--                        <option class="tasks-filter-item" value="Archive">Archive</option>-->
+<!--                        <option class="tasks-filter-item" value="Complete">Complete</option>-->
+<!--                    </select>-->
+<!--                </form>-->
 
                 <form action="/task" method="get">
                     <button type="submit" class="btn btn-dark btn-add-task">Add Task</button>
