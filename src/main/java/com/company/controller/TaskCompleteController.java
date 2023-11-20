@@ -20,12 +20,12 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
-public class TaskArchiveController {
+public class TaskCompleteController {
     private final JwtService service;
     private final TaskService taskService;
     private final UserServiceImpl userService;
     private final StatusService statusService;
-    private static final Logger log = LoggerFactory.getLogger(TaskArchiveController.class);
+    private static final Logger log = LoggerFactory.getLogger(TaskCompleteController.class);
 
 
     @GetMapping("/tasksarchive")

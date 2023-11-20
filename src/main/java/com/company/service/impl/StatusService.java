@@ -36,4 +36,7 @@ public class StatusService {
     public List<Status> getDeletedStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsDeleted(taskId, true);
     }
+    public List<Status> getArchiveStatusesForTask(List<Long> taskId) {
+        return statusRepository.findByTaskIdInAndIsArchive(taskId, true);
+    }
 }
