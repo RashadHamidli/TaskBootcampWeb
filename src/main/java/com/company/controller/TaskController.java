@@ -47,13 +47,11 @@ public class TaskController {
         return "redirect:/tasksdashboard";
     }
 
+    @PostMapping("/edit")
+    public String editTask(TaskRequest request) {
+        Long taskId = request.getTaskId();
+        taskService.updateTaskByTaskId(taskId, request);
+        return "redirect:/tasksdashboard";
+    }
+
 }
-//    @PostMapping
-//    public String addTask(HttpSession session, TaskRequest request, Model model) {
-//        String token = (String) session.getAttribute("token");
-//        model.addAttribute("token", token);
-//        String email = jwtService.extractUserName(token);
-//        Long userId = userService.findByUserId(email);
-//        taskService.createTaskForUser(userId, request);
-//        return "redirect:/tasksdashboard";
-//    }
