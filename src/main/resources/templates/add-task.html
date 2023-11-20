@@ -74,9 +74,10 @@
                                   placeholder="Write your text here..."></textarea>
                     </div>
                     </p>
+                    <input type="hidden" value="tasks" id="taskId"/>
                     <input type="hidden" th:value="${userId}" id="userId"/>
                     <button type="submit" class="btn btn-dark btn-add-task">Add task</button>
-                    <a th:href="@{/tasksdashboard}" class="btn btn-dark">Cancel</a>
+                    <a th:href="@{/tasks}" class="btn btn-dark">Cancel</a>
                 </div>
             </div>
         </form>

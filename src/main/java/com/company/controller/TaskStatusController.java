@@ -31,13 +31,15 @@ public class TaskStatusController {
         String email = jwtService.extractUserName(token);
         Long userId = userService.findByUserId(email);
         model.addAttribute("userId", userId);
-        return "redirect:/tasksdelete";
+        return "redirect:/tasks";
     }
 
 
     @PostMapping()
     public String filterTasks(@RequestParam("task-type") String taskType) {
         switch (taskType) {
+            case "tasks":
+                return "redirect:/tasks";
             case "delete":
                 return "redirect:/tasksdelete";
             case "important":
@@ -47,7 +49,7 @@ public class TaskStatusController {
             case "Complete":
                 return "redirect:/taskscomplete";
             default:
-                return "redirect:/tasksdelete";
+                return "redirect:/tasks";
         }
     }
 

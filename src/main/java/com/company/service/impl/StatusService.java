@@ -1,6 +1,7 @@
 package com.company.service.impl;
 
 import com.company.dao.entities.Status;
+import com.company.dao.entities.Task;
 import com.company.dao.repository.TaskRepository;
 import com.company.dto.request.StatusRequest;
 import com.company.dto.response.StatusRepository;
@@ -21,6 +22,19 @@ public class StatusService {
         return statusRepository.findAll();
     }
 
+    public Status addStatus(Long taskId, StatusRequest statusRequest) {
+        Task task = new Task();
+        task.setId(taskId);
+
+        Status status = new Status();
+        status.setIsDeleted(statusRequest.getIsDeleted());
+        status.setIsArchive(statusRequest.getIsArchive());
+        status.setIsImportant(statusRequest.getIsImportant());
+        status.setIsComplete(statusRequest.getIsComplete());
+        status.setIsTasks(statusRequest.getIsTasks());
+
+        return statusRepository.save(status);
+    }
     @Transactional
     public Status isDelete(Long taskId, StatusRequest statusRequest) {
         return taskRepository.findById(taskId)
@@ -44,5 +58,9 @@ public class StatusService {
     }
     public List<Status> getImportantStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsImportant(taskId, true);
+    }
+
+    public List<Status> getTasksStatusesForTask(List<Long> taskId) {
+        return statusRepository.findByTaskIdInAndIsTasks(taskId, true);
     }
 }

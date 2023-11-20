@@ -311,7 +311,20 @@ body {
     text-decoration: none;
     transition: 0.3s;
 }
-
+.btn-filter {
+    display: inline-block;
+    width: 150px;
+    box-sizing: border-box;
+    padding: 9px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 15px;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+}
 .task-btn:hover {
     background-color: #828282;
     color: white;

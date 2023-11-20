@@ -1,12 +1,10 @@
 package com.company.dto.response;
 
 import com.company.dao.entities.Status;
-import com.company.dao.entities.Task;
-
-import java.util.List;
 
 public class StatusRespons {
     private Long id;
+    private Boolean isTasks;
     private Boolean isDeleted;
     private Boolean isArchive;
     private Boolean isImportant;
@@ -15,6 +13,7 @@ public class StatusRespons {
 
     public StatusRespons(Status status) {
         this.id = status.getId();
+        this.isTasks = status.getIsTasks();
         this.isArchive = status.getIsArchive();
         this.isDeleted = status.getIsDeleted();
         this.isImportant = status.getIsImportant();

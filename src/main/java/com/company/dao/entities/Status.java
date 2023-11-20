@@ -17,6 +17,7 @@ public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Boolean isTasks;
     private Boolean isComplete;
     private Boolean isDeleted;
     private Boolean isArchive;

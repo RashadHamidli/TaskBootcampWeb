@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Data
 @RequiredArgsConstructor
 public class StatusRequest {
+    private Boolean isTasks;
     private Boolean isDeleted;
     private Boolean isArchive;
     private Boolean isImportant;

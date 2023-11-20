@@ -18,4 +18,6 @@ public interface StatusRepository extends JpaRepository<Status, Integer> {
     List<Status> findByTaskIdInAndIsComplete(List<Long> taskId, Boolean isComplete);
 
     List<Status> findByTaskIdInAndIsImportant(List<Long> taskId, Boolean isImportnant);
+
+    List<Status> findByTaskIdInAndIsTasks(List<Long> taskId, Boolean tasks);
 }
