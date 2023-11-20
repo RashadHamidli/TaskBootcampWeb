@@ -79,27 +79,13 @@ public class TaskServiceImpl implements TaskService {
                 .orElseThrow(MyExceptionHandler::new);
     }
 
-
-    //    @Transactional
-//    public boolean deleteTaskByTaskId(Long taskId) {
-//        Optional<Task> optionalTask = taskRepository.findById(taskId);
-//        if (optionalTask.isPresent()) {
-//            Task task = optionalTask.get();
-//            taskRepository.deleteTask(task);
-//            return true;
-//        }
-//        return false;
-//    }
     @Override
     @Transactional
     public boolean deleteTaskByTaskId(Long taskId) {
-        Optional<Task> optionalTask = taskRepository.findById(taskId);
-        if (optionalTask.isPresent()) {
-            taskRepository.deleteById(taskId);
-            return true;
-        }
-        return false;
+        taskRepository.deleteTask(taskId);
+        return true;
     }
+
 
     @Override
     public boolean deleteTaskByUserIdAndTaskId(Long taskId, Long userId) {

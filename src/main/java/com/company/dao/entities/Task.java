@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Builder
@@ -25,14 +26,6 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", dedline=" + dedline +
-                ", name='" + taskName + '\'' +
-                ", taskText='" + taskText + '\'' +
-                ", user=" + (user != null ? user.getId() : "null") + // Örnek: User nesnesinin id'sini al
-                '}';
-    }
+    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Status> statusList;
 }

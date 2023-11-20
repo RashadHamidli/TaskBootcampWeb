@@ -1,10 +1,12 @@
 package com.company.controller;
 
 import com.company.config.AuthenticationFacade;
+import com.company.dto.request.StatusRequest;
 import com.company.dto.request.TaskRequest;
 import com.company.dto.response.JwtAuthenticationResponse;
 import com.company.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
+import com.company.service.impl.StatusServie;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.AuthenticationService;
 import com.company.service.inter.TaskService;
@@ -27,6 +29,7 @@ public class TaskController {
     private final TaskService taskService;
     private final JwtServiceImpl jwtService;
     private final UserServiceImpl userService;
+    private final StatusServie statusServie;
 
     @GetMapping()
     public String task(HttpSession session, Model model) {
@@ -59,10 +62,16 @@ public class TaskController {
     @PostMapping("/delete")
     public String deleteTask(TaskRequest request) {
         Long taskId = request.getTaskId();
-        System.out.println("taskId: " + taskId);
-        boolean b = taskService.deleteTaskByTaskId(taskId);
-        System.out.println("silindi? " + b);
+        StatusRequest statusRequest = new StatusRequest();
+        statusRequest.setIsDeleted(true);
+        statusServie.isDelete(taskId, statusRequest);
         return "redirect:/tasksdashboard";
     }
+//    @PostMapping("/delete")
+//    public String deleteTask(TaskRequest request) {
+//        Long taskId = request.getTaskId();
+//        taskService.deleteTaskByTaskId(taskId);
+//        return "redirect:/tasksdashboard";
+//    }
 
 }
