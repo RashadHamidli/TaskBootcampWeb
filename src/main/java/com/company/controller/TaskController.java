@@ -62,20 +62,4 @@ public class TaskController {
         return "redirect:/tasksdashboard";
     }
 
-//    @PostMapping("/filterTasks")
-//    public String filterTasks(@RequestParam("task-type") String taskType) {
-//        switch (taskType) {
-//            case "delete":
-//                return "redirect:/tasksdelete";
-//            case "important":
-//                return "redirect:/tasksimportant";
-//            case "Archive":
-//                return "redirect:/tasksarchive";
-//            case "Complete":
-//                return "redirect:/taskscomplete";
-//            default:
-//                return "redirect:/tasksdelete";
-//        }
-//    }
-
 }

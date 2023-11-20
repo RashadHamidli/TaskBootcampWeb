@@ -31,7 +31,7 @@ public class TaskStatusController {
         String email = jwtService.extractUserName(token);
         Long userId = userService.findByUserId(email);
         model.addAttribute("userId", userId);
-        return "tasks-statuses";
+        return "redirect:/tasksdelete";
     }
 
 
