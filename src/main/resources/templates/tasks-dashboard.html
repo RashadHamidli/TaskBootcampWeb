@@ -72,7 +72,7 @@
                     </select>
                 </form>
 
-                <form action="/addtask" method="get">
+                <form action="/task" method="get">
                     <button type="submit" class="btn btn-dark btn-add-task">Add Task</button>
                 </form>
             </div>
@@ -94,7 +94,7 @@
         <div th:each="task : ${tasks}" th:id="'taskDetailModalEdit-' + ${task.id}" class="modalt">
             <div class="modalt-content">
                 <span class="closet">&times;</span>
-                <form action="/addtask/edit" method="post">
+                <form action="/task/edit" method="post">
                     <div class="task-card-section">
                         <div class="task-card">
                             <div class="task-card-left-col">
@@ -171,10 +171,17 @@
                                 <img src="/img/bell.png" alt="" class="task-card-actions-icon">
                                 Add to important
                             </a>
-                            <a href="#" class="task-card-actions-item">
-                                <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
-                                Delete
-                            </a>
+                            <form action="/task/delete" method="post" style="display:inline;">
+                                <input type="hidden" name="taskId" th:value="${task.id}" />
+                                <button type="submit" class="task-card-actions-item" style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
+                                    <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
+                                    Delete now
+                                </button>
+                            </form>
+<!--                            <a href="#" class="task-card-actions-item">-->
+<!--                                <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">-->
+<!--                                Delete-->
+<!--                            </a>-->
                         </div>
                     </div>
 

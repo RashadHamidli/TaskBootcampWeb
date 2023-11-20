@@ -12,15 +12,17 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/addtask")
+@RequestMapping("/task")
 public class TaskController {
     private final TaskService taskService;
     private final JwtServiceImpl jwtService;
@@ -37,7 +39,7 @@ public class TaskController {
         return "add-task";
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public String addTask(HttpSession session, TaskRequest request, Model model) {
         String token = (String) session.getAttribute("token");
         String email = jwtService.extractUserName(token);
@@ -51,6 +53,15 @@ public class TaskController {
     public String editTask(TaskRequest request) {
         Long taskId = request.getTaskId();
         taskService.updateTaskByTaskId(taskId, request);
+        return "redirect:/tasksdashboard";
+    }
+
+    @PostMapping("/delete")
+    public String deleteTask(TaskRequest request) {
+        Long taskId = request.getTaskId();
+        System.out.println("taskId: " + taskId);
+        boolean b = taskService.deleteTaskByTaskId(taskId);
+        System.out.println("silindi? " + b);
         return "redirect:/tasksdashboard";
     }
 

@@ -7,6 +7,7 @@ import com.company.dto.request.TaskRequest;
 import com.company.dto.response.TaskRespons;
 import com.company.exceptions.MyExceptionHandler;
 import com.company.service.inter.TaskService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -23,10 +24,12 @@ public class TaskServiceImpl implements TaskService {
         this.taskRepository = taskRepository;
         this.userRepository = userRepository;
     }
+
     @Override
     public List<TaskRespons> getAllTasks() {
         return taskRepository.findAll().stream().map(TaskRespons::new).collect(Collectors.toList());
     }
+
     public List<TaskRespons> getAllTasksById(Long userId) {
         List<Task> tasks = taskRepository.findByUserId(userId);
         List<TaskRespons> taskResponsList = tasks.stream()
@@ -34,17 +37,20 @@ public class TaskServiceImpl implements TaskService {
                 .collect(Collectors.toList());
         return taskResponsList;
     }
+
     @Override
     public TaskRespons getTaskById(Long taskId) {
         Task task = taskRepository.findById(taskId).orElseThrow();
         return new TaskRespons(task);
     }
+
     @Override
     public TaskRespons createTask(TaskRequest taskRequest) {
         Task task = new TaskRequest().taskRequestConverToTask(taskRequest);
         Task savedTask = taskRepository.save(task);
         return new TaskRespons(savedTask);
     }
+
     @Override
     public TaskRespons createTaskForUser(Long userId, TaskRequest taskRequest) {
         return userRepository.findById(userId)
@@ -56,6 +62,7 @@ public class TaskServiceImpl implements TaskService {
                 })
                 .orElseThrow(MyExceptionHandler::new);
     }
+
     @Override
     public TaskRespons updateTaskByTaskId(Long taskId, TaskRequest taskRequest) {
         return taskRepository.findById(taskId)
@@ -71,17 +78,24 @@ public class TaskServiceImpl implements TaskService {
                 })
                 .orElseThrow(MyExceptionHandler::new);
     }
+
     @Override
     public boolean deleteTaskByTaskId(Long taskId) {
-        Task task = taskRepository.findById(taskId)
-                .orElseThrow(MyExceptionHandler::new);
-        taskRepository.delete(task);
-        return true;
+        System.out.println("taskid: " + taskId);
+        Optional<Task> optionalTask = taskRepository.findById(taskId);
+        if (optionalTask.isPresent()) {
+            Task task = optionalTask.get();
+            System.out.println("task: " + task);
+            taskRepository.delete(task);
+            return true;
+        }
+        return false;
     }
+
     @Override
     public boolean deleteTaskByUserIdAndTaskId(Long taskId, Long userId) {
         Task task = taskRepository.findById(taskId).orElseThrow(MyExceptionHandler::new);
-        if(task.getUser().getId().equals(userId)){
+        if (task.getUser().getId().equals(userId)) {
             taskRepository.delete(task);
             return true;
         }

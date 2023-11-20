@@ -1,10 +1,7 @@
 package com.company.dao.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 
@@ -28,4 +25,14 @@ public class Task {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", dedline=" + dedline +
+                ", name='" + taskName + '\'' +
+                ", taskText='" + taskText + '\'' +
+                ", user=" + (user != null ? user.getId() : "null") + // Örnek: User nesnesinin id'sini al
+                '}';
+    }
 }
