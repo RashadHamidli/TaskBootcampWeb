@@ -24,15 +24,16 @@ public class TaskDeleteController {
     private static final Logger log = LoggerFactory.getLogger(TaskDeleteController.class);
 
 
-    @GetMapping("/tasksdashboard")
+    @GetMapping("/tasksdelete")
     public String getTasks(HttpSession session, Model model) {
         String token = (String) session.getAttribute("token");
         String email = service.extractUserName(token);
         Long userId = userService.findByUserId(email);
         List<TaskRespons> tasks = taskService.getAllTasksById(userId);
+
         model.addAttribute("tasks", tasks);
         UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
         model.addAttribute("userRespons", userResp);
-        return "tasks-dashboard";
+        return "tasks-deleted";
     }
 }
