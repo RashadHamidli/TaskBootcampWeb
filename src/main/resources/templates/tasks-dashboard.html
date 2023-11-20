@@ -54,7 +54,7 @@
         <div class="main-header-profile-wrapper">
             <div class="main-header-profile-credentials">
                 <span class="main-header-username" th:text="${userRespons.name}"></span>
-                                <span class="main-header-username" th:text="${userRespons.surname}"></span>
+                <span class="main-header-username" th:text="${userRespons.surname}"></span>
             </div>
             <img class="main-header-user-icon" src="/img/user-icon-with-background.svg" alt="user">
             <div class="hidden-accordion-wrapper">
@@ -92,13 +92,13 @@
                 </form>
 
                 <form action="/addtask" method="get">
-                    <button type="submit"  class="btn btn-dark btn-add-task">Add Task</button>
+                    <button type="submit" class="btn btn-dark btn-add-task">Add Task</button>
                 </form>
             </div>
         </div>
 
         <div id="tasksList" class="tasks-list">
-            <div th:each="task : ${tasks}" class="task" onclick="showTaskDetails(this)">
+            <div th:each="task : ${tasks}" class="task">
                 <h4 class="task-titlet" th:text="${task.taskName}"></h4>
                 <br>
                 <p class="task-deadline-datet" th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}">
@@ -110,6 +110,51 @@
                     <img class="task-icons-item" src="/img/trash-bin.png" alt="Çöp Qutusu Nişanı">
                 </div>
                 <a href="#" class="task-btn">Complete</a>
+            </div>
+        </div>
+    </div>
+    <div id="taskDetailsModal" class="modalt">
+        <div class="modalt-content">
+            <span class="closet">&times;</span>
+            <div class="task-card-section">
+                <h3 class="task-card-title" id="taskDetailTitle">Task 002</h3>
+                <div class="task-card">
+                    <div class="task-card-left-col">
+                        <div class="task-card-img _1"></div>
+                        <div class="task-card-form">
+                            <div class="task-card-form-row">
+                                <label class="task-card-label">Deadline:</label>
+                                <input name="task-card-date" type="text" id="taskDetailDate" class="task-card-input"
+                                       value="">
+                            </div>
+                            <div class="task-card-form-row">
+                                <label class="task-card-label">Task Name</label>
+                                <input name="name-task" type="text" id="taskDetailName" class="task-card-input"
+                                       placeholder="Task 002" value="" disabled>
+                            </div>
+                        </div>
+                        <div class="task-card-actions">
+                            <a href="#" class="task-card-actions-item">
+                                <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
+                                Share
+                            </a>
+                            <a href="#" class="task-card-actions-item">
+                                <img src="/img/bell.png" alt="" class="task-card-actions-icon">
+                                Add to important
+                            </a>
+                            <a href="#" class="task-card-actions-item">
+                                <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
+                                Delete
+                            </a>
+                        </div>
+                    </div>
+                    <div class="task-card-right-col">
+                        <h4 class="task-card-header">Task Description</h4>
+                        <p class="task-card-text" id="taskDetailText"></p>
+                        <a href="#" class="btn btn-dark btn-task-card">Complete</a>
+                        <a href="#" class="btn btn-dark btn-task-card" >Close</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
