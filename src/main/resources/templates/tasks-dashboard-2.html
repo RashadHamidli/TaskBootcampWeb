@@ -40,10 +40,6 @@
         body.modal-open {
             overflow: hidden;
         }
-
-        .modalt:target {
-            display: block;
-        }
     </style>
 </head>
 <body>
@@ -82,14 +78,31 @@
 
 <section class="tasks">
     <div class="container">
+        <div class="tasks-caption">
+            <h2 class="tasks-caption-title">Dashboard</h2>
+            <div class="tasks-caption-actions">
+                <form class="tasks-filter" action="" id="sort-tasks">
+                    <label class="tasks-filter-label">Filter</label>
+                    <select class="tasks-filter-list" name="task-type" id="">
+                        <option class="tasks-filter-item" value="silinmiş">Deleted</option>
+                        <option class="tasks-filter-item" value="keçik">Important</option>
+                        <option class="tasks-filter-item" value="bugün">Today</option>
+                        <option class="tasks-filter-item" value="tamam">Complete</option>
+                    </select>
+                </form>
+
+                <form action="/addtask" method="get">
+                    <button type="submit" class="btn btn-dark btn-add-task">Add Task</button>
+                </form>
+            </div>
+        </div>
+
         <div id="tasksList" class="tasks-list">
             <div th:each="task : ${tasks}" class="task">
-                <h4 class="task-titlet">
-                    <a href="#taskDetailModal" th:text="${task.taskName}"
-                       th:href="'#taskDetailModal-' + ${task.id}"></a>
-                </h4>
+                <h4 class="task-titlet" th:text="${task.taskName}"></h4>
                 <br>
-                <p class="task-deadline-datet" th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}"></p>
+                <p class="task-deadline-datet" th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}">
+                </p>
                 <br>
                 <p class="task-description" th:text="${task.taskText}"></p>
                 <div class="task-icons">
@@ -99,54 +112,53 @@
                 <a href="#" class="task-btn">Complete</a>
             </div>
         </div>
+    </div>
 
-        <div th:each="task : ${tasks}" th:id="'taskDetailModal-' + ${task.id}" class="modalt">
-            <div class="modalt-content">
-                <span class="closet">&times;</span>
-                <div class="task-card-section">
-                    <h3 class="task-card-title" id="taskDetailTitle" th:text="${task.taskName}"></h3>
-                    <div class="task-card">
-                        <div class="task-card-left-col">
-                            <!-- Diğer modal içeriği buraya eklenir -->
-                            <div class="task-card-img _1"></div>
-                            <div class="task-card-form">
-                                <div class="task-card-form-row">
-                                    <label class="task-card-label">Deadline:</label>
-                                    <h3 class="task-card-input" id="taskDetailDate"
-                                        th:text="${task.getDeadline()}"></h3>
-                                </div>
-                                <div class="task-card-form-row">
-                                    <label class="task-card-label">Task Name</label>
-                                    <h3 class="task-card-input" id="taskDetailName"
-                                        th:text="${task.getTaskName()}"></h3>
-                                </div>
+    <div id="taskDetailsModal" class="modalt">
+        <div class="modalt-content">
+            <span class="closet">&times;</span>
+            <div class="task-card-section">
+                <h3 class="task-card-title" id="taskDetailTitle">Task 002</h3>
+                <div class="task-card">
+                    <div class="task-card-left-col">
+                        <div class="task-card-img _1"></div>
+                        <div class="task-card-form">
+                            <div class="task-card-form-row">
+                                <label class="task-card-label">Deadline:</label>
+                                <input name="task-card-date" type="text" id="taskDetailDate" class="task-card-input"
+                                       value="">
                             </div>
-                            <div class="task-card-actions">
-                                <a href="#" class="task-card-actions-item">
-                                    <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
-                                    Share
-                                </a>
-                                <a href="#" class="task-card-actions-item">
-                                    <img src="/img/bell.png" alt="" class="task-card-actions-icon">
-                                    Add to important
-                                </a>
-                                <a href="#" class="task-card-actions-item">
-                                    <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
-                                    Delete
-                                </a>
+                            <div class="task-card-form-row">
+                                <label class="task-card-label">Task Name</label>
+                                <input name="name-task" type="text" id="taskDetailName" class="task-card-input"
+                                       placeholder="Task 002" value="" disabled>
                             </div>
                         </div>
-
-                        <div class="task-card-right-col">
-                            <h4 class="task-card-header">Task Description</h4>
-                            <p class="task-card-text" id="taskDetailText" th:text="${task.taskText}"></p>
-                            <a href="#" class="btn btn-dark btn-task-card">Complete</a>
-                            <a href="#" class="btn btn-dark btn-task-card">Close</a>
+                        <div class="task-card-actions">
+                            <a href="#" class="task-card-actions-item">
+                                <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
+                                Share
+                            </a>
+                            <a href="#" class="task-card-actions-item">
+                                <img src="/img/bell.png" alt="" class="task-card-actions-icon">
+                                Add to important
+                            </a>
+                            <a href="#" class="task-card-actions-item">
+                                <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
+                                Delete
+                            </a>
                         </div>
+                    </div>
+                    <div class="task-card-right-col">
+                        <h4 class="task-card-header">Task Description</h4>
+                        <p class="task-card-text" id="taskDetailText"></p>
+                        <a href="#" class="btn btn-dark btn-task-card">Complete</a>
+                        <a href="#" class="btn btn-dark btn-task-card" >Close</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 </body>
