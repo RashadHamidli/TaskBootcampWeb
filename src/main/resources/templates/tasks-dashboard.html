@@ -8,41 +8,18 @@
     <link rel="stylesheet" href="/css/main.css">
     <title>Task Panel</title>
     <style>
-        .modalt {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
+        .view-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
         }
 
-        .modalt-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-
-        .closet {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        body.modal-open {
-            overflow: hidden;
-        }
-
-        .modalt:target {
-            display: block;
+        .view-button:hover {
+            background-color: #2980b9;
         }
     </style>
 </head>
@@ -79,35 +56,93 @@
         </div>
     </div>
 </header>
-
+<br>
 <section class="tasks">
     <div class="container">
+        <div class="tasks-caption">
+            <h2 class="tasks-caption-title">Dashboard</h2>
+            <div class="tasks-caption-actions">
+                <form class="tasks-filter" action="" id="sort-tasks">
+                    <label class="tasks-filter-label">Filter</label>
+                    <select class="tasks-filter-list" name="task-type" id="">
+                        <option class="tasks-filter-item" value="silinmiş">Deleted</option>
+                        <option class="tasks-filter-item" value="keçik">Important</option>
+                        <option class="tasks-filter-item" value="bugün">Today</option>
+                        <option class="tasks-filter-item" value="tamam">Complete</option>
+                    </select>
+                </form>
+
+                <form action="/addtask" method="get">
+                    <button type="submit" class="btn btn-dark btn-add-task">Add Task</button>
+                </form>
+            </div>
+        </div>
+
         <div id="tasksList" class="tasks-list">
             <div th:each="task : ${tasks}" class="task">
-                <h4 class="task-titlet">
-                    <a href="#taskDetailModal" th:text="${task.taskName}"
-                       th:href="'#taskDetailModal-' + ${task.id}"></a>
-                </h4>
+                <h4 class="task-titlet" th:text="${task.taskName}"></h4>
                 <br>
                 <p class="task-deadline-datet" th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}"></p>
                 <br>
                 <p class="task-description" th:text="${task.taskText}"></p>
-                <div class="task-icons">
-                    <img class="task-icons-item" src="/img/bell.png" alt="Zəng Nişanı">
-                    <img class="task-icons-item" src="/img/trash-bin.png" alt="Çöp Qutusu Nişanı">
-                </div>
-                <a href="#" class="task-btn">Complete</a>
+                <br>
+                <a class="task-btn" th:href="'#taskDetailModalView-' + ${task.id}">View task</a>
+                <a class="task-btn" th:href="'#taskDetailModalEdit-' + ${task.id}">Edit task</a>
             </div>
         </div>
 
-        <div th:each="task : ${tasks}" th:id="'taskDetailModal-' + ${task.id}" class="modalt">
+        <div th:each="task : ${tasks}" th:id="'taskDetailModalEdit-' + ${task.id}"  class="modalt">
             <div class="modalt-content">
                 <span class="closet">&times;</span>
                 <div class="task-card-section">
-<!--                    <h3 class="task-card-title" id="taskDetailTitle" th:text="${task.taskName}"></h3>-->
                     <div class="task-card">
                         <div class="task-card-left-col">
-                            <!-- Diğer modal içeriği buraya eklenir -->
+                            <div class="task-card-img _1"></div>
+                            <div class="task-card-form">
+                                <div class="task-card-form-row">
+                                    <label class="task-card-label">Deadline:</label>
+                                    <input name="deadline" type="date" placeholder="2020-06-30" class="task-card-input" th:value="${#dates.format(task.deadline, 'yyyy-MM-dd')}">
+                                </div>
+                                <div class="task-card-form-row">
+                                    <label class="task-card-label">Task Name</label>
+                                    <input name="taskName" type="text" placeholder="Task name" class="task-card-input" th:value="${task.getTaskName()}">
+                                </div>
+                            </div>
+                            <div class="task-card-actions">
+                                <a href="#" class="task-card-actions-item">
+                                    <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
+                                    Share
+                                </a>
+                                <a href="#" class="task-card-actions-item">
+                                    <img src="/img/bell.png" alt="" class="task-card-actions-icon">
+                                    Add to important
+                                </a>
+                                <a href="#" class="task-card-actions-item">
+                                    <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
+                                    Delete
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="task-card-right-col">
+                            <h4 class="task-card-header">Task Description</h4>
+                            <textarea name="taskText" type="text" class="text-card-input" th:text="${task.taskText}"
+                                      placeholder="Write your text here..."></textarea>
+                            <a href="#" class="btn btn-dark btn-task-card">Save</a>
+                            <a href="#" class="btn btn-dark btn-task-card">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div th:each="task : ${tasks}" th:id="'taskDetailModalView-' + ${task.id}"  class="modalt">
+            <div class="modalt-content">
+                <span class="closet">&times;</span>
+                <div class="task-card-section">
+                    <div class="task-card">
+                        <div class="task-card-left-col">
                             <div class="task-card-img _1"></div>
                             <div class="task-card-form">
                                 <div class="task-card-form-row">
@@ -141,12 +176,14 @@
                             <h4 class="task-card-header">Task Description</h4>
                             <p class="task-card-text" id="taskDetailText" th:text="${task.taskText}"></p>
                             <a href="#" class="btn btn-dark btn-task-card">Complete</a>
+                            <a class="task-btn btn btn-dark btn-task-card" th:href="'#taskDetailModalEdit-' + ${task.id}">Edit task</a>
                             <a href="#" class="btn btn-dark btn-task-card">Close</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 </body>
