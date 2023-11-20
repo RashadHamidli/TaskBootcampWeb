@@ -1,23 +1,25 @@
 package com.company.service.impl;
 
 import com.company.dao.entities.Status;
-import com.company.dao.entities.Task;
 import com.company.dao.repository.TaskRepository;
 import com.company.dto.request.StatusRequest;
-import com.company.dto.request.TaskRequest;
 import com.company.dto.response.StatusRepository;
-import com.company.dto.response.TaskRespons;
 import com.company.exceptions.MyExceptionHandler;
-import com.company.service.inter.TaskService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
-public class StatusServie {
+public class StatusService {
     private final StatusRepository statusRepository;
     private final TaskRepository taskRepository;
+
+    public List<Status> getAllStatusById() {
+        return statusRepository.findAll();
+    }
 
     @Transactional
     public Status isDelete(Long taskId, StatusRequest statusRequest) {
@@ -31,4 +33,7 @@ public class StatusServie {
                 .orElseThrow(() -> new MyExceptionHandler("Task not found with ID: " + taskId));
     }
 
+    public List<Status> getDeletedStatusesForTask(List<Long> taskId) {
+        return statusRepository.findByTaskIdInAndIsDeleted(taskId, true);
+    }
 }

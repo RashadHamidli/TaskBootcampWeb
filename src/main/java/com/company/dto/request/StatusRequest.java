@@ -9,4 +9,5 @@ public class StatusRequest {
     private Boolean isDeleted;
     private Boolean isArchive;
     private Boolean isImportant;
+    private Boolean isComplete;
 }

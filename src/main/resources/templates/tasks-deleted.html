@@ -64,12 +64,12 @@
         </div>
 
         <div id="tasksList" class="tasks-list">
-            <div th:each="task : ${tasks}" class="task">
-                <h4 class="task-titlet" th:text="${task.taskName}"></h4>
+            <div th:each="task : ${deletedStatuses}" class="task">
+                <h4 class="task-titlet" th:text="${task.getTask().getTaskName()}"></h4>
                 <br>
-                <p class="task-deadline-datet" th:text="${#dates.format(task.deadline, 'dd.MM.yyyy')}"></p>
+                <p class="task-deadline-datet" th:text="${#dates.format(task.getTask().getDedline(), 'dd.MM.yyyy')}"></p>
                 <br>
-                <p class="task-description" th:text="${task.taskText}"></p>
+                <p class="task-description" th:text="${task.getTask().getTaskText()}"></p>
                 <br>
                 <a class="task-btn" th:href="'#taskDetailModalView-' + ${task.id}">View task</a>
                 <a class="task-btn" th:href="'#taskDetailModalEdit-' + ${task.id}">Edit task</a>

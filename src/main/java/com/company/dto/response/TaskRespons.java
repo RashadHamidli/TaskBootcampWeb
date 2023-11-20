@@ -1,9 +1,11 @@
 package com.company.dto.response;
 
+import com.company.dao.entities.Status;
 import com.company.dao.entities.Task;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class TaskRespons {
@@ -12,6 +14,7 @@ public class TaskRespons {
     private Date deadline;
     private String taskText;
     private Long userId;
+    private List<Status> statusList;
 
     public TaskRespons(Task task) {
         this.id = task.getId();
