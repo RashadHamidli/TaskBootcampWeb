@@ -28,7 +28,7 @@ public class TaskCompleteController {
     private static final Logger log = LoggerFactory.getLogger(TaskCompleteController.class);
 
 
-    @GetMapping("/tasksarchive")
+    @GetMapping("/taskscomplete")
     public String getTasks(HttpSession session, Model model) {
         String token = (String) session.getAttribute("token");
         String email = service.extractUserName(token);
@@ -37,7 +37,7 @@ public class TaskCompleteController {
         List<TaskRespons> userTasks = taskService.getAllTasksById(userId);
         List<Long> userTaskIds = userTasks.stream().map(TaskRespons::getId).collect(Collectors.toList());
 
-        List<Status> deletedStatuses = statusService.getArchiveStatusesForTask(userTaskIds);
+        List<Status> deletedStatuses = statusService.getCompleteStatusesForTask(userTaskIds);
 
         model.addAttribute("deletedStatuses", deletedStatuses);
 

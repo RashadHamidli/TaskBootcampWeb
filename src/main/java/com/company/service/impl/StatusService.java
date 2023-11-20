@@ -39,4 +39,7 @@ public class StatusService {
     public List<Status> getArchiveStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsArchive(taskId, true);
     }
+    public List<Status> getCompleteStatusesForTask(List<Long> taskId) {
+        return statusRepository.findByTaskIdInAndIsComplete(taskId, true);
+    }
 }

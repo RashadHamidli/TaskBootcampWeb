@@ -15,4 +15,5 @@ public interface StatusRepository extends JpaRepository<Status, Integer> {
 
     List<Status> findByTaskIdInAndIsArchive(List<Long> taskId, Boolean isArchive);
 
+    List<Status> findByTaskIdInAndIsComplete(List<Long> taskId, Boolean isComplete);
 }
