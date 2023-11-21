@@ -21,10 +21,11 @@ public class StatusService {
     public List<Status> getAllStatusById() {
         return statusRepository.findAll();
     }
-
+    @Transactional
     public Status addStatus(Long taskId, StatusRequest statusRequest) {
         Task task = new Task();
         task.setId(taskId);
+        statusRepository.deleteByTaskId(taskId);
 
         Status status = new Status();
         status.setIsDeleted(statusRequest.getIsDeleted());
@@ -33,8 +34,10 @@ public class StatusService {
         status.setIsComplete(statusRequest.getIsComplete());
         status.setIsTasks(statusRequest.getIsTasks());
 
+        status.setTask(task);
         return statusRepository.save(status);
     }
+
     @Transactional
     public Status isDelete(Long taskId, StatusRequest statusRequest) {
         return taskRepository.findById(taskId)

@@ -46,10 +46,6 @@ public class TaskController {
 
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsTasks(true);
-        statusRequest.setIsDeleted(false);
-        statusRequest.setIsArchive(false);
-        statusRequest.setIsImportant(false);
-        statusRequest.setIsComplete(false);
 
         statusService.addStatus(taskRespons.getId(), statusRequest);
 
@@ -68,8 +64,32 @@ public class TaskController {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsDeleted(true);
-        statusService.isDelete(taskId, statusRequest);
-        return "redirect:/tasksdashboard";
+        statusService.addStatus(taskId, statusRequest);
+        return "redirect:/status";
+    }
+    @PostMapping("/important")
+    public String importantTask(TaskRequest request) {
+        Long taskId = request.getTaskId();
+        StatusRequest statusRequest = new StatusRequest();
+        statusRequest.setIsImportant(true);
+        statusService.addStatus(taskId, statusRequest);
+        return "redirect:/status";
+    }
+    @PostMapping("/complete")
+    public String completeTask(TaskRequest request) {
+        Long taskId = request.getTaskId();
+        StatusRequest statusRequest = new StatusRequest();
+        statusRequest.setIsComplete(true);
+        statusService.addStatus(taskId, statusRequest);
+        return "redirect:/status";
+    }
+    @PostMapping("/archive")
+    public String archiveTask(TaskRequest request) {
+        Long taskId = request.getTaskId();
+        StatusRequest statusRequest = new StatusRequest();
+        statusRequest.setIsArchive(true);
+        statusService.addStatus(taskId, statusRequest);
+        return "redirect:/status";
     }
 
 }

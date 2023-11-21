@@ -11,6 +11,7 @@ public interface StatusRepository extends JpaRepository<Status, Integer> {
 
     List<Status> findByIsDeletedTrue();
 
+
     List<Status> findByTaskIdInAndIsDeleted(List<Long> taskId, Boolean isDeleted);
 
     List<Status> findByTaskIdInAndIsArchive(List<Long> taskId, Boolean isArchive);
@@ -20,4 +21,6 @@ public interface StatusRepository extends JpaRepository<Status, Integer> {
     List<Status> findByTaskIdInAndIsImportant(List<Long> taskId, Boolean isImportnant);
 
     List<Status> findByTaskIdInAndIsTasks(List<Long> taskId, Boolean tasks);
+
+    void deleteByTaskId(Long taskId);
 }
