@@ -43,6 +43,7 @@ public class TaskCompleteController {
 
         UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
         model.addAttribute("userRespons", userResp);
+        model.addAttribute("status", "Complete");
         return "tasks-statuses";
     }
 }

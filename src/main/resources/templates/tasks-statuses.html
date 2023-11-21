@@ -46,6 +46,7 @@
     <div class="container">
         <div class="tasks-caption">
             <h2 class="tasks-caption-title">Dashboard</h2>
+            <h2 class="tasks-caption-title" th:text="${status}"></h2>
             <div class="tasks-caption-actions">
 
                 <form class="tasks-filter" action="/status" method="post" id="sort-tasks">
@@ -67,6 +68,7 @@
         </div>
 
         <div id="tasksList" class="tasks-list">
+
             <div th:each="status : ${statuses}" class="task">
                 <h4 class="task-titlet" th:text="${status.getTask().getTaskName()}"></h4>
                 <br>
@@ -101,24 +103,6 @@
                                                class="task-card-input" th:value="${status.getTask().getTaskName()}">
                                     </div>
                                 </div>
-<!--                                <div class="task-card-actions">-->
-<!--                                    <a href="#" class="task-card-actions-item">-->
-<!--                                        <img src="/img/arrow.png" alt="" class="task-card-actions-icon">-->
-<!--                                        Share-->
-<!--                                    </a>-->
-<!--                                    <a href="#" class="task-card-actions-item">-->
-<!--                                        <img src="/img/bell.png" alt="" class="task-card-actions-icon">-->
-<!--                                        Add to important-->
-<!--                                    </a>-->
-<!--                                    <form action="/task/delete" method="post" style="display:inline;">-->
-<!--                                        <input type="hidden" name="taskId" th:value="${status.getTask().getId()}"/>-->
-<!--                                        <button type="submit" class="task-card-actions-item"-->
-<!--                                                style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">-->
-<!--                                            <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">-->
-<!--                                            Delete-->
-<!--                                        </button>-->
-<!--                                    </form>-->
-<!--                                </div>-->
                             </div>
 
                             <div class="task-card-right-col">

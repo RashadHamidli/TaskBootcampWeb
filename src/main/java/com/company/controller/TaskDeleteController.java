@@ -43,6 +43,7 @@ public class TaskDeleteController {
 
         UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
         model.addAttribute("userRespons", userResp);
+        model.addAttribute("status", "Deleted");
         return "tasks-statuses";
     }
 }

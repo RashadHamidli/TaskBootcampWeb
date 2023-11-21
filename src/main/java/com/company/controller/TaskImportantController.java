@@ -43,6 +43,7 @@ public class TaskImportantController {
 
         UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
         model.addAttribute("userRespons", userResp);
+        model.addAttribute("status", "Important");
         return "tasks-statuses";
     }
 }

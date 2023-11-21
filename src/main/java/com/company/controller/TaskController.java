@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -43,12 +44,9 @@ public class TaskController {
         Long userId = userService.findByUserId(email);
         model.addAttribute("userId", userId);
         TaskRespons taskRespons = taskService.createTaskForUser(userId, request);
-
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsTasks(true);
-
         statusService.addStatus(taskRespons.getId(), statusRequest);
-
         return "redirect:/tasks";
     }
 
@@ -65,31 +63,34 @@ public class TaskController {
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsDeleted(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/status";
+        return "redirect:/task/delete";
     }
+
     @PostMapping("/important")
     public String importantTask(TaskRequest request) {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsImportant(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/status";
+        return "redirect:/task/important";
     }
+
     @PostMapping("/complete")
     public String completeTask(TaskRequest request) {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsComplete(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/status";
+        return "redirect:/task/complete";
     }
+
     @PostMapping("/archive")
     public String archiveTask(TaskRequest request) {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsArchive(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/status";
+        return "redirect:/task/archive";
     }
 
 }

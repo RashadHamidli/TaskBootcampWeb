@@ -43,6 +43,7 @@ public class TasksController {
 
         UserRespons userResp = (UserRespons) session.getAttribute("userRespons");
         model.addAttribute("userRespons", userResp);
+        model.addAttribute("status", "Tasks");
         return "tasks-statuses";
     }
 }
