@@ -18,9 +18,6 @@ public class StatusService {
     private final StatusRepository statusRepository;
     private final TaskRepository taskRepository;
 
-    public List<Status> getAllStatusById() {
-        return statusRepository.findAll();
-    }
     @Transactional
     public Status addStatus(Long taskId, StatusRequest statusRequest) {
         Task task = new Task();
@@ -36,18 +33,6 @@ public class StatusService {
 
         status.setTask(task);
         return statusRepository.save(status);
-    }
-
-    @Transactional
-    public Status isDelete(Long taskId, StatusRequest statusRequest) {
-        return taskRepository.findById(taskId)
-                .map(task -> {
-                    Status status = new Status();
-                    status.setIsDeleted(statusRequest.getIsDeleted());
-                    status.setTask(task);
-                    return statusRepository.save(status);
-                })
-                .orElseThrow(() -> new MyExceptionHandler("Task not found with ID: " + taskId));
     }
 
     public List<Status> getDeletedStatusesForTask(List<Long> taskId) {
