@@ -14,7 +14,6 @@ public class TaskRespons {
     private Date deadline;
     private String taskText;
     private Long userId;
-    private List<Status> statusList;
 
     public TaskRespons(Task task) {
         this.id = task.getId();
