@@ -1,7 +1,8 @@
-package com.company.mail;
+package com.company.controller;
 
+import com.company.dao.entities.User;
+import com.company.service.inter.NotificationService;
 import lombok.RequiredArgsConstructor;
-import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +17,12 @@ public class MailController {
 
     @GetMapping("/send")
     public String sendMail(Model model) {
-        UserMail user = new UserMail();
-        user.setName("Rashad");
-        user.setEmailAddress("rashad.j13@email.com");
+        User user = new User();
+        user.setFirstName("Rashad");
+        user.setEmail("rashad.j13@email.com");
 
         try {
-            notificationService.sendNotification(user);
+//            notificationService.sendNotification(user);
             model.addAttribute("message", "E-posta başarıyla gönderildi.");
         } catch (MailException e) {
             e.printStackTrace();

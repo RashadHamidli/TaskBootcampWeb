@@ -7,6 +7,7 @@ import com.company.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
 import com.company.service.impl.StatusService;
 import com.company.service.impl.UserServiceImpl;
+import com.company.service.inter.NotificationService;
 import com.company.service.inter.TaskService;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ public class TaskController {
     private final JwtServiceImpl jwtService;
     private final UserServiceImpl userService;
     private final StatusService statusService;
+    private final NotificationService notificationService;
 
     @GetMapping()
     public String task(HttpSession session, Model model) {
@@ -47,6 +49,7 @@ public class TaskController {
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsTasks(true);
         statusService.addStatus(taskRespons.getId(), statusRequest);
+        notificationService.sendNotification(email);
         return "redirect:/tasks";
     }
 
