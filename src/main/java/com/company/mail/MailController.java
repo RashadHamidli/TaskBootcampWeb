@@ -18,7 +18,7 @@ public class MailController {
     public String sendMail(Model model) {
         UserMail user = new UserMail();
         user.setName("Rashad");
-        user.setEmailAddress("mr_rashad@email.com");
+        user.setEmailAddress("rashad.j13@email.com");
 
         try {
             notificationService.sendNotification(user);
