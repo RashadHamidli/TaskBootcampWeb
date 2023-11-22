@@ -49,7 +49,8 @@ public class TaskController {
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsTasks(true);
         statusService.addStatus(taskRespons.getId(), statusRequest);
-        notificationService.sendNotification(email);
+        UserRespons userRespons = userService.userNameAndSurname(email);
+        notificationService.sendNotification(email, userRespons);
         return "redirect:/tasks";
     }
 
