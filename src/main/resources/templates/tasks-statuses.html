@@ -45,7 +45,6 @@
 <section class="tasks">
     <div class="container">
         <div class="tasks-caption">
-            <h2 class="tasks-caption-title">Dashboard</h2>
             <h2 class="tasks-caption-title" th:text="${status}"></h2>
             <div class="tasks-caption-actions">
 
@@ -142,12 +141,12 @@
                         </div>
 
                         <div class="task-card-actions">
-                            <form action="/task/complete" method="post" style="display:inline;">
+                            <form action="/task/archive" method="post" style="display:inline;">
                                 <input type="hidden" name="taskId" th:value="${status.getTask().getId()}"/>
                                 <button type="submit" class="task-card-actions-item"
                                         style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
                                     <img src="/img/arrow.png" alt="" class="task-card-actions-icon">
-                                    Complete
+                                    Archive
                                 </button>
                             </form>
                             <form action="/task/important" method="post" style="display:inline;">
@@ -166,25 +165,19 @@
                                     Delete
                                 </button>
                             </form>
-                            <form action="/task/archive" method="post" style="display:inline;">
-                                <input type="hidden" name="taskId" th:value="${status.getTask().getId()}"/>
-                                <button type="submit" class="task-card-actions-item"
-                                        style="border: none; background: none; padding: 0; margin: 0; cursor: pointer;">
-                                    <img src="/img/trash-bin.png" alt="" class="task-card-actions-icon">
-                                    Archive
-                                </button>
-                            </form>
                         </div>
                     </div>
 
                     <div class="task-card-right-col">
                         <h4 class="task-card-header">Task Description</h4>
                         <p class="task-card-text" id="taskDetailText" th:text="${status.getTask().getTaskText()}"></p>
-                        <a href="#" class="btn btn-dark btn-task-card">Complete</a>
-                        <a class="task-btn btn btn-dark btn-task-card"
-                           th:href="'#taskDetailModalEdit-' + ${status.getTask().getId()}">Edit
-                            task</a>
-                        <a href="#" class="btn btn-dark btn-task-card">Close</a>
+
+                        <form action="/task/complete" method="post">
+                            <input type="hidden" name="taskId" th:value="${status.getTask().getId()}"/>
+                            <button type="submit" class="task-btn btn btn-dark btn-task-card">Complete</button>
+                        </form> <br>
+                        <a class="task-btn btn btn-dark btn-task-card" th:href="'#taskDetailModalEdit-' + ${status.getTask().getId()}">Edit task</a>
+                        <a href="#" class="task-btn btn btn-dark btn-task-card">Close</a>
                     </div>
                 </div>
             </div>

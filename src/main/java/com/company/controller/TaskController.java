@@ -63,7 +63,7 @@ public class TaskController {
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsDeleted(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/task/delete";
+        return "redirect:/tasksdelete";
     }
 
     @PostMapping("/important")
@@ -72,7 +72,7 @@ public class TaskController {
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsImportant(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/task/important";
+        return "redirect:/tasksimportant";
     }
 
     @PostMapping("/complete")
@@ -81,7 +81,7 @@ public class TaskController {
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsComplete(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/task/complete";
+        return "redirect:/taskscomplete";
     }
 
     @PostMapping("/archive")
@@ -90,7 +90,7 @@ public class TaskController {
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsArchive(true);
         statusService.addStatus(taskId, statusRequest);
-        return "redirect:/task/archive";
+        return "redirect:/tasksarchive";
     }
 
 }
