@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.MailException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.logging.Logger;
 
 @Controller
 @RequiredArgsConstructor
@@ -15,16 +15,19 @@ public class MailController {
     private final NotificationService notificationService;
 
     @GetMapping("/send")
-    public String sendMail() {
+    public String sendMail(Model model) {
         UserMail user = new UserMail();
         user.setName("Rashad");
         user.setEmailAddress("mr_rashad@email.com");
+
         try {
             notificationService.sendNotification(user);
-            return "mail gonderildi";
+            model.addAttribute("message", "E-posta başarıyla gönderildi.");
         } catch (MailException e) {
             e.printStackTrace();
+            model.addAttribute("message", "E-posta gönderme sırasında bir sorun oluştu.");
         }
-        return "problem bas verdi";
+
+        return "mail-result";
     }
 }

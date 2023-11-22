@@ -15,7 +15,7 @@ public class NotificationServiceImpl implements NotificationService {
     public void sendNotification(UserMail userMail) throws MailException {
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo(userMail.getEmailAddress());
-        mail.setFrom("");
+        mail.setFrom("rashadh.j13@gmail.com");
         mail.setSubject("Test Mail");
         mail.setText("Hi " + userMail.getName() + " email sent");
         javaMailSender.send(mail);
