@@ -23,4 +23,13 @@ public class NotificationServiceImpl implements NotificationService {
         mail.setText("Hi " + userRespons.getName() + " " + userRespons.getSurname() + " new task added in your page");
         javaMailSender.send(mail);
     }
+    @Override
+    public void sendNotificationPassword(String email) throws MailException {
+        SimpleMailMessage mail = new SimpleMailMessage();
+        mail.setTo(email);
+        mail.setFrom("mail_rashad@mail.ru");
+        mail.setSubject("password change");
+        mail.setText("Hi, change new password use this tp '123456'");
+        javaMailSender.send(mail);
+    }
 }
