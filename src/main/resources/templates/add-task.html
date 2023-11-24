@@ -76,6 +76,7 @@
                     </p>
                     <input type="hidden" value="tasks" id="taskId"/>
                     <input type="hidden" th:value="${userId}" id="userId"/>
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                     <button type="submit" class="btn btn-dark btn-add-task">Add task</button>
                     <a th:href="@{/tasks}" class="btn btn-dark">Cancel</a>
                 </div>

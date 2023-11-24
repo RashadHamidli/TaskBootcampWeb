@@ -57,6 +57,7 @@
                     </div>
 
                     <div class="button-container">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
                         <button type="submit" class="btn btn-dark">Login now</button>
                         <a href="/signup" class="btn btn-light">Create account</a>
                     </div>
