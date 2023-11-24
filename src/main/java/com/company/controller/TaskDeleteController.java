@@ -3,7 +3,7 @@ package com.company.controller;
 import com.company.dao.entities.Status;
 import com.company.dto.response.TaskRespons;
 import com.company.dto.response.UserRespons;
-import com.company.service.impl.StatusService;
+import com.company.service.impl.StatusServiceImpl;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.JwtService;
 import com.company.service.inter.TaskService;
@@ -24,7 +24,7 @@ public class TaskDeleteController {
     private final JwtService service;
     private final TaskService taskService;
     private final UserServiceImpl userService;
-    private final StatusService statusService;
+    private final StatusServiceImpl statusServiceImpl;
     private static final Logger log = LoggerFactory.getLogger(TaskDeleteController.class);
 
 
@@ -37,7 +37,7 @@ public class TaskDeleteController {
         List<TaskRespons> userTasks = taskService.getAllTasksById(userId);
         List<Long> userTaskIds = userTasks.stream().map(TaskRespons::getId).collect(Collectors.toList());
 
-        List<Status> statuses = statusService.getDeletedStatusesForTask(userTaskIds);
+        List<Status> statuses = statusServiceImpl.getDeletedStatusesForTask(userTaskIds);
 
         model.addAttribute("statuses", statuses);
 

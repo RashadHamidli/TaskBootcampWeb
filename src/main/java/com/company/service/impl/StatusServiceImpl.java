@@ -5,7 +5,6 @@ import com.company.dao.entities.Task;
 import com.company.dao.repository.TaskRepository;
 import com.company.dto.request.StatusRequest;
 import com.company.dto.response.StatusRepository;
-import com.company.exceptions.MyExceptionHandler;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,7 +13,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class StatusService {
+public class StatusServiceImpl {
     private final StatusRepository statusRepository;
     private final TaskRepository taskRepository;
 

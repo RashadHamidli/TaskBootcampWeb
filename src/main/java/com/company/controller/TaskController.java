@@ -5,7 +5,7 @@ import com.company.dto.request.TaskRequest;
 import com.company.dto.response.TaskRespons;
 import com.company.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
-import com.company.service.impl.StatusService;
+import com.company.service.impl.StatusServiceImpl;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.NotificationService;
 import com.company.service.inter.TaskService;
@@ -17,7 +17,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,7 +26,7 @@ public class TaskController {
     private final TaskService taskService;
     private final JwtServiceImpl jwtService;
     private final UserServiceImpl userService;
-    private final StatusService statusService;
+    private final StatusServiceImpl statusServiceImpl;
     private final NotificationService notificationService;
 
     @GetMapping()
@@ -50,7 +49,7 @@ public class TaskController {
         TaskRespons taskRespons = taskService.createTaskForUser(userId, request);
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsTasks(true);
-        statusService.addStatus(taskRespons.getId(), statusRequest);
+        statusServiceImpl.addStatus(taskRespons.getId(), statusRequest);
         UserRespons userRespons = userService.userNameAndSurname(email);
         notificationService.sendNotification(email, userRespons);
         return "redirect:/tasks";
@@ -68,7 +67,7 @@ public class TaskController {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsDeleted(true);
-        statusService.addStatus(taskId, statusRequest);
+        statusServiceImpl.addStatus(taskId, statusRequest);
         return "redirect:/tasksdelete";
     }
 
@@ -77,7 +76,7 @@ public class TaskController {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsImportant(true);
-        statusService.addStatus(taskId, statusRequest);
+        statusServiceImpl.addStatus(taskId, statusRequest);
         return "redirect:/tasksimportant";
     }
 
@@ -86,7 +85,7 @@ public class TaskController {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsComplete(true);
-        statusService.addStatus(taskId, statusRequest);
+        statusServiceImpl.addStatus(taskId, statusRequest);
         return "redirect:/taskscomplete";
     }
 
@@ -95,7 +94,7 @@ public class TaskController {
         Long taskId = request.getTaskId();
         StatusRequest statusRequest = new StatusRequest();
         statusRequest.setIsArchive(true);
-        statusService.addStatus(taskId, statusRequest);
+        statusServiceImpl.addStatus(taskId, statusRequest);
         return "redirect:/tasksarchive";
     }
 

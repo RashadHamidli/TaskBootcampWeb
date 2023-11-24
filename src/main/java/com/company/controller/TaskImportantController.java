@@ -3,7 +3,7 @@ package com.company.controller;
 import com.company.dao.entities.Status;
 import com.company.dto.response.TaskRespons;
 import com.company.dto.response.UserRespons;
-import com.company.service.impl.StatusService;
+import com.company.service.impl.StatusServiceImpl;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.JwtService;
 import com.company.service.inter.TaskService;
@@ -24,7 +24,7 @@ public class TaskImportantController {
     private final JwtService service;
     private final TaskService taskService;
     private final UserServiceImpl userService;
-    private final StatusService statusService;
+    private final StatusServiceImpl statusServiceImpl;
     private static final Logger log = LoggerFactory.getLogger(TaskImportantController.class);
 
 
@@ -37,7 +37,7 @@ public class TaskImportantController {
         List<TaskRespons> userTasks = taskService.getAllTasksById(userId);
         List<Long> userTaskIds = userTasks.stream().map(TaskRespons::getId).collect(Collectors.toList());
 
-        List<Status> statuses = statusService.getImportantStatusesForTask(userTaskIds);
+        List<Status> statuses = statusServiceImpl.getImportantStatusesForTask(userTaskIds);
 
         model.addAttribute("statuses", statuses);
 
