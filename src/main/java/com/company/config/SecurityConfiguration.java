@@ -23,10 +23,10 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(
-        prePostEnabled = true,
-        securedEnabled = true,
-        jsr250Enabled = true)
+//@EnableGlobalMethodSecurity(
+//        prePostEnabled = true,
+//        securedEnabled = true,
+//        jsr250Enabled = true)
 public class SecurityConfiguration {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final UserServiceImpl userServiceImpl;
@@ -46,40 +46,11 @@ public class SecurityConfiguration {
                         .permitAll()
                         .anyRequest()
                         .authenticated())
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/landing")
-                        .permitAll()
-                )
-                .logout(LogoutConfigurer::permitAll)
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
-
-
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.csrf(AbstractHttpConfigurer::disable)
-//                .authorizeHttpRequests(request -> request
-//                        .requestMatchers("/**")
-//                        .permitAll()
-//                        .anyRequest()
-//                        .authenticated())
-////                .formLogin((form) -> form
-////                        .loginPage("/login")
-////                        .loginProcessingUrl("/login")
-////                        .defaultSuccessUrl("/landing")
-////                        .permitAll()
-////                )
-////                .logout(LogoutConfigurer::permitAll)
-//                .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-//                .authenticationProvider(authenticationProvider())
-//                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//        return http.build();
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
