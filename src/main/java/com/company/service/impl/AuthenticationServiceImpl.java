@@ -58,10 +58,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         if (request == null)
             return null;
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        if (!authenticate.isAuthenticated()) {
-            System.out.println("user dogrualamadan kecmedi");
-            return null;
-        }
         var user = userRepository.findByEmail(request.getEmail());
         Token foundedToken = tokenRepository.findByUserId(user.getId());
         String token = foundedToken.getToken();

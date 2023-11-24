@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class LogoutController {
-    @GetMapping("login.html")
+    @GetMapping("logout")
     public String logout() {
         return "login";
     }

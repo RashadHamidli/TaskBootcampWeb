@@ -36,6 +36,8 @@ public class SecurityConfiguration {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/login",
+                                "/**",
+                                "/landing",
                                 "/signup",
                                 "/reset",
                                 "/resetpassword",
@@ -44,10 +46,11 @@ public class SecurityConfiguration {
                                 "/js/**",
                                 "/img/**")
                         .permitAll()
+//                        .requestMatchers("/landing").hasRole("USER")
                         .anyRequest()
                         .authenticated())
-                .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-                .authenticationProvider(authenticationProvider())
+//                .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
+//                .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
