@@ -17,7 +17,7 @@ public class SignUpController {
 
     @GetMapping()
     public String signup() {
-        return "reset";
+        return "sign-up";
     }
 
     private final AuthenticationService authenticationService;
@@ -27,7 +27,7 @@ public class SignUpController {
         JwtAuthenticationResponse response = authenticationService.signup(request);
         if (response == null) {
             System.out.println("register cannot be successfully");
-            return new ModelAndView("reset");
+            return new ModelAndView("/sign-up");
         }
         return new ModelAndView("login");
     }

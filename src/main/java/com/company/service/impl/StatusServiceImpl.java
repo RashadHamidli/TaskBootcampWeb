@@ -5,6 +5,7 @@ import com.company.dao.entities.Task;
 import com.company.dao.repository.TaskRepository;
 import com.company.dto.request.StatusRequest;
 import com.company.dto.response.StatusRepository;
+import com.company.service.inter.StatusService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class StatusServiceImpl {
+public class StatusServiceImpl implements StatusService {
     private final StatusRepository statusRepository;
-    private final TaskRepository taskRepository;
 
+    @Override
     @Transactional
     public Status addStatus(Long taskId, StatusRequest statusRequest) {
         Task task = new Task();
@@ -34,19 +35,27 @@ public class StatusServiceImpl {
         return statusRepository.save(status);
     }
 
+    @Override
     public List<Status> getDeletedStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsDeleted(taskId, true);
     }
+
+    @Override
     public List<Status> getArchiveStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsArchive(taskId, true);
     }
+
+    @Override
     public List<Status> getCompleteStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsComplete(taskId, true);
     }
+
+    @Override
     public List<Status> getImportantStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsImportant(taskId, true);
     }
 
+    @Override
     public List<Status> getTasksStatusesForTask(List<Long> taskId) {
         return statusRepository.findByTaskIdInAndIsTasks(taskId, true);
     }
