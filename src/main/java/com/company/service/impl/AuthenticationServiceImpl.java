@@ -38,7 +38,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 request.getPassword() != null &&
                 request.getConfirmPassword() != null &&
                 !request.getPassword().equals(request.getConfirmPassword())) {
-            return null;
+            throw new IllegalArgumentException("Passwords do not match");
         }
         var user = User.builder().firstName(request.getFirstName()).lastName(request.getLastName())
                 .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
@@ -59,6 +59,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             return null;
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         if (!authenticate.isAuthenticated()) {
+            System.out.println("user dogrualamadan kecmedi");
             return null;
         }
         var user = userRepository.findByEmail(request.getEmail());

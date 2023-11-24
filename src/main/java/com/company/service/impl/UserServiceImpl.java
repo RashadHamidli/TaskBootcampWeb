@@ -10,10 +10,13 @@ import com.company.dto.response.TaskRespons;
 import com.company.dto.response.UserRespons;
 import com.company.exceptions.MyExceptionHandler;
 import com.company.service.inter.UserService;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,7 +36,11 @@ public class UserServiceImpl implements UserService {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) {
-                return userRepository.findByEmail(username);
+                User user = userRepository.findByEmail(username);
+                System.out.println("username: " + username);
+                System.out.println("user.getEmail(): " + user.getEmail());
+                System.out.println("user.getPassword(): " + user.getPassword());
+                return user;
             }
         };
     }
