@@ -18,14 +18,18 @@ public class ResetPasswordController {
     }
     @GetMapping("/resetpassword")
     public String getResetPassword() {
-        return "sign-up";
+        return "reset";
     }
 
     @PostMapping("/reset")
     public String postResetPassword(UserRequest userRequest) {
         String email = userRequest.getEmail();
         notificationService.sendNotificationPassword(email);
-        return "/resetpassword";
+        return "reset";
+    }
+    @PostMapping("/resetpassword")
+    public String postResetPassword() {
+        return "login";
     }
 
 
