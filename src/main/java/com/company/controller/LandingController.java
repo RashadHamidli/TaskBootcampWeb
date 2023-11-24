@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/landing")
-//@PreAuthorize("hasRole('USER')")
 public class LandingController {
 
     @GetMapping()
