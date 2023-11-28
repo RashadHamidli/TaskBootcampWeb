@@ -1,12 +1,7 @@
 package com.company.service.inter;
 
 import com.company.dao.entities.Status;
-import com.company.dao.entities.Task;
-import com.company.dao.repository.TaskRepository;
 import com.company.dto.request.StatusRequest;
-import com.company.dto.response.StatusRepository;
-import jakarta.transaction.Transactional;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

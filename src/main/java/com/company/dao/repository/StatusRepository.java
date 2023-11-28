@@ -1,4 +1,4 @@
-package com.company.dto.response;
+package com.company.dao.repository;
 
 import com.company.dao.entities.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
