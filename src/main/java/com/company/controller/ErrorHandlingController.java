@@ -37,6 +37,6 @@ public class ErrorHandlingController implements ErrorController {
             return modelAndView;
         }
 
-        return new ModelAndView("error");
+        return new ModelAndView("redirect:/login");
     }
 }
