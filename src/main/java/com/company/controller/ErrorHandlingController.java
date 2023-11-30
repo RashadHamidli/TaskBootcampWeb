@@ -16,7 +16,7 @@ public class ErrorHandlingController implements ErrorController {
 
     @GetMapping
     public String getErrorPath() {
-        return "/error";
+        return "/login";
     }
 
     @RequestMapping()
@@ -37,6 +37,6 @@ public class ErrorHandlingController implements ErrorController {
             return modelAndView;
         }
 
-        return new ModelAndView("redirect:/login");
+        return new ModelAndView("/login");
     }
 }
