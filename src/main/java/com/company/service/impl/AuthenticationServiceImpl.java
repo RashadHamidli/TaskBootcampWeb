@@ -76,13 +76,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return null;
     }
 
-//        if (jwtService.isTokenValid(token, user)) {
-//            var jwt = jwtService.generateToken(user);
-//            return JwtAuthenticationResponse.builder().token(jwt).build();
-//        } else {
-//            JwtAuthenticationResponse refreshToken = refresh(request);
-//            return JwtAuthenticationResponse.builder().token(refreshToken.getToken()).build();
-//        }
 
 
     @Override
