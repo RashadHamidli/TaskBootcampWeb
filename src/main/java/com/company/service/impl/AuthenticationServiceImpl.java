@@ -59,16 +59,30 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             return null;
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         var user = userRepository.findByEmail(request.getEmail());
+        if (user == null) {
+            return null;
+        }
         Token foundedToken = tokenRepository.findByUserId(user.getId());
         String token = foundedToken.getToken();
-        if (jwtService.isTokenValid(token, user)) {
-            var jwt = jwtService.generateToken(user);
-            return JwtAuthenticationResponse.builder().token(jwt).build();
-        } else {
+        try {
+            if (jwtService.isTokenValid(token, user)) {
+                var jwt = jwtService.generateToken(user);
+                return JwtAuthenticationResponse.builder().token(jwt).build();
+            }
+        } catch (Exception e) {
             JwtAuthenticationResponse refreshToken = refresh(request);
             return JwtAuthenticationResponse.builder().token(refreshToken.getToken()).build();
         }
+        return null;
     }
+
+//        if (jwtService.isTokenValid(token, user)) {
+//            var jwt = jwtService.generateToken(user);
+//            return JwtAuthenticationResponse.builder().token(jwt).build();
+//        } else {
+//            JwtAuthenticationResponse refreshToken = refresh(request);
+//            return JwtAuthenticationResponse.builder().token(refreshToken.getToken()).build();
+//        }
 
 
     @Override
