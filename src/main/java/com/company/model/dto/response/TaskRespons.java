@@ -1,11 +1,9 @@
-package com.company.dto.response;
+package com.company.model.dto.response;
 
-import com.company.dao.entities.Status;
-import com.company.dao.entities.Task;
+import com.company.model.dao.entities.Task;
 import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 @Data
 public class TaskRespons {

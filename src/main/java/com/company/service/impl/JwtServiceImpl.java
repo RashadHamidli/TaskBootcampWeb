@@ -1,6 +1,5 @@
 package com.company.service.impl;
 
-import com.company.dao.entities.User;
 import com.company.service.inter.JwtService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;

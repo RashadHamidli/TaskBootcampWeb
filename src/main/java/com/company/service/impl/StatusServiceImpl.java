@@ -1,9 +1,9 @@
 package com.company.service.impl;
 
-import com.company.dao.entities.Status;
-import com.company.dao.entities.Task;
-import com.company.dto.request.StatusRequest;
-import com.company.dao.repository.StatusRepository;
+import com.company.model.dao.entities.Status;
+import com.company.model.dao.entities.Task;
+import com.company.model.dto.request.StatusRequest;
+import com.company.model.dao.repository.StatusRepository;
 import com.company.service.inter.StatusService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

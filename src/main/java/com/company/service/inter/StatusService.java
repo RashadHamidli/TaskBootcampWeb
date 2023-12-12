@@ -1,7 +1,7 @@
 package com.company.service.inter;
 
-import com.company.dao.entities.Status;
-import com.company.dto.request.StatusRequest;
+import com.company.model.dao.entities.Status;
+import com.company.model.dto.request.StatusRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

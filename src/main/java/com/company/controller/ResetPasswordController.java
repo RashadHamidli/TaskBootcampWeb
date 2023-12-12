@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dto.request.UserRequest;
+import com.company.model.dto.request.UserRequest;
 import com.company.service.inter.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;

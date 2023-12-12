@@ -1,13 +1,13 @@
 package com.company.service.impl;
 
-import com.company.dao.entities.Role;
-import com.company.dao.entities.Token;
-import com.company.dao.entities.User;
-import com.company.dao.repository.TokenRepository;
-import com.company.dao.repository.UserRepository;
-import com.company.dto.request.SignUpRequest;
-import com.company.dto.request.SigninRequest;
-import com.company.dto.response.JwtAuthenticationResponse;
+import com.company.model.dao.entities.Role;
+import com.company.model.dao.entities.Token;
+import com.company.model.dao.entities.User;
+import com.company.model.dao.repository.TokenRepository;
+import com.company.model.dao.repository.UserRepository;
+import com.company.model.dto.request.SignUpRequest;
+import com.company.model.dto.request.SigninRequest;
+import com.company.model.dto.response.JwtAuthenticationResponse;
 import com.company.service.inter.AuthenticationService;
 import com.company.service.inter.JwtService;
 import lombok.RequiredArgsConstructor;

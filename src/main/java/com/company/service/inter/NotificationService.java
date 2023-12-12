@@ -1,7 +1,6 @@
 package com.company.service.inter;
 
-import com.company.dao.entities.User;
-import com.company.dto.response.UserRespons;
+import com.company.model.dto.response.UserRespons;
 import org.springframework.mail.MailException;
 
 public interface NotificationService {

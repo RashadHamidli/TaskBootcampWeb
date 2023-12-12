@@ -1,9 +1,9 @@
 package com.company.controller;
 
-import com.company.dto.request.StatusRequest;
-import com.company.dto.request.TaskRequest;
-import com.company.dto.response.TaskRespons;
-import com.company.dto.response.UserRespons;
+import com.company.model.dto.request.StatusRequest;
+import com.company.model.dto.request.TaskRequest;
+import com.company.model.dto.response.TaskRespons;
+import com.company.model.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
 import com.company.service.impl.StatusServiceImpl;
 import com.company.service.impl.UserServiceImpl;

@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dao.entities.User;
+import com.company.model.dao.entities.User;
 import com.company.service.inter.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;

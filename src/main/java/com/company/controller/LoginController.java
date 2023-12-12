@@ -1,10 +1,9 @@
 package com.company.controller;
 
 
-import com.company.dao.entities.User;
-import com.company.dto.request.SigninRequest;
-import com.company.dto.response.JwtAuthenticationResponse;
-import com.company.dto.response.UserRespons;
+import com.company.model.dto.request.SigninRequest;
+import com.company.model.dto.response.JwtAuthenticationResponse;
+import com.company.model.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
 import com.company.service.inter.AuthenticationService;
 import com.company.service.inter.UserService;
@@ -15,9 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor

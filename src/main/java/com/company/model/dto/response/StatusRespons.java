@@ -1,6 +1,6 @@
-package com.company.dto.response;
+package com.company.model.dto.response;
 
-import com.company.dao.entities.Status;
+import com.company.model.dao.entities.Status;
 
 public class StatusRespons {
     private Long id;

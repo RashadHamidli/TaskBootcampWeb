@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.dto.response.UserRespons;
+import com.company.model.dto.response.UserRespons;
 import com.company.service.impl.JwtServiceImpl;
 import com.company.service.impl.UserServiceImpl;
 import jakarta.servlet.http.HttpSession;

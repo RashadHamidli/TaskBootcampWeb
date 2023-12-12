@@ -1,18 +1,16 @@
 package com.company.service.impl;
 
-import com.company.dao.entities.Task;
-import com.company.dao.repository.TaskRepository;
-import com.company.dao.repository.UserRepository;
-import com.company.dto.request.TaskRequest;
-import com.company.dto.response.TaskRespons;
+import com.company.model.dao.entities.Task;
+import com.company.model.dao.repository.TaskRepository;
+import com.company.model.dao.repository.UserRepository;
+import com.company.model.dto.request.TaskRequest;
+import com.company.model.dto.response.TaskRespons;
 import com.company.exceptions.MyExceptionHandler;
 import com.company.service.inter.TaskService;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

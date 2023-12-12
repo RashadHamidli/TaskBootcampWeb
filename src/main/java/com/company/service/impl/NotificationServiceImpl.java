@@ -1,7 +1,6 @@
 package com.company.service.impl;
 
-import com.company.dao.entities.User;
-import com.company.dto.response.UserRespons;
+import com.company.model.dto.response.UserRespons;
 import com.company.service.inter.NotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;

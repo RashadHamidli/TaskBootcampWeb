@@ -1,8 +1,8 @@
 package com.company.controller;
 
-import com.company.dao.entities.Status;
-import com.company.dto.response.TaskRespons;
-import com.company.dto.response.UserRespons;
+import com.company.model.dao.entities.Status;
+import com.company.model.dto.response.TaskRespons;
+import com.company.model.dto.response.UserRespons;
 import com.company.service.impl.StatusServiceImpl;
 import com.company.service.impl.UserServiceImpl;
 import com.company.service.inter.JwtService;

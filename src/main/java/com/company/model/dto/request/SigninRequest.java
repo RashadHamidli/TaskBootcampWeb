@@ -1,4 +1,4 @@
-package com.company.dto.request;
+package com.company.model.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignUpRequest {
-    private String firstName;
-    private String lastName;
+public class SigninRequest {
     private String email;
     private String password;
-    private String confirmPassword;
 }

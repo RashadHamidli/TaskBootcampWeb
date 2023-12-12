@@ -1,12 +1,9 @@
 package com.company.controller;
 
 
-import com.company.dto.response.UserRespons;
-import com.company.service.inter.JwtService;
-import com.company.service.inter.UserService;
+import com.company.model.dto.response.UserRespons;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,11 +1,8 @@
-package com.company.dao.repository;
+package com.company.model.dao.repository;
 
-import com.company.dao.entities.User;
-import com.company.dto.response.UserRespons;
+import com.company.model.dao.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

@@ -1,6 +1,6 @@
-package com.company.dto.request;
+package com.company.model.dto.request;
 
-import com.company.dao.entities.User;
+import com.company.model.dao.entities.User;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 

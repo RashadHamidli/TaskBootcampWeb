@@ -1,6 +1,6 @@
-package com.company.dao.repository;
+package com.company.model.dao.repository;
 
-import com.company.dao.entities.Status;
+import com.company.model.dao.entities.Status;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
