@@ -22,6 +22,7 @@ public class GlobalExceptionHandler {
         modelAndView.addObject("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         modelAndView.addObject("errorName", "ServerError");
         modelAndView.addObject("errorMessage", "An unexpected error occurred.");
+        System.out.println("error");
 
         return modelAndView;
     }
