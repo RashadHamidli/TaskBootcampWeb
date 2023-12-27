@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Error</title>
+    <title>Error Page</title>
 </head>
 <body>
-<h1>Xeta bas verdi</h1>
+<h2>Error Page</h2>
+
+<p>Status Code: <span th:text="${status}"></span></p>
+<p>Error Name: <span th:text="${errorName}"></span></p>
+<p>Error Message: <span th:text="${errorMessage}"></span></p>
+
+
+<p><a href="/">login page</a></p>
 </body>
 </html>
