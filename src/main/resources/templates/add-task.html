@@ -10,79 +10,84 @@
     <title>Add new task</title>
 </head>
 <body>
-<header class="main-header">
-    <a href="tasks-dashboard.html" class="main-header-logo"></a>
-    <div class="main-header-wrapper">
-        <label class="main-header-search-wrapper">
-            <input type="search" class="main-header-search" placeholder="Search">
-            <img src="img/search-icon.svg" alt="Search Icon">
-        </label>
-        <div class="main-header-profile-wrapper">
-            <div class="main-header-profile-credentials">
-                <span class="main-header-username" th:text="${userRespons.name}"></span>
-                <span class="main-header-username" th:text="${userRespons.surname}"></span>
-            </div>
-            <img class="main-header-user-icon" src="img/user-icon-with-background.svg" alt="User Icon">
-            <div class="hidden-accordion-wrapper">
-                <ul class="hidden-accordion">
-                    <li class="hidden-accordion-item"><a href="tasks-archive.html"
-                                                         class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="img/archive-icon.svg" alt="User Icon">Archive</a>
-                    </li>
-                    <li class="hidden-accordion-item"><a href="tasks-dashboard.html" class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="img/favourite-icon.svg" alt="Favourite Icon">My
-                        tasks</a></li>
-                    <li class="hidden-accordion-item"><a href="login.html" class="hidden-accordion-item-link"><img
-                            class="hidden-accordion-item-image" src="img/log-out-icon.svg" alt="Log Out Icon">Log
-                        Out</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</header>
-
-<section class="add-task">
-    <div class="container">
-        <div class="tasks-caption">
-            <h2 class="tasks-caption-title">Add new task</h2>
-            <div class="tasks-caption-actions">
+<div>
+    <header class="main-header">
+        <a href="tasks-dashboard.html" class="main-header-logo"></a>
+        <div class="main-header-wrapper">
+            <label class="main-header-search-wrapper">
+                <input type="search" class="main-header-search" placeholder="Search">
+                <img src="img/search-icon.svg" alt="Search Icon">
+            </label>
+            <div class="main-header-profile-wrapper">
+                <div class="main-header-profile-credentials">
+                    <span class="main-header-username" th:text="${userRespons.name}"></span>
+                    <span class="main-header-username" th:text="${userRespons.surname}"></span>
+                </div>
+                <img class="main-header-user-icon" src="img/user-icon-with-background.svg" alt="User Icon">
+                <div class="hidden-accordion-wrapper">
+                    <ul class="hidden-accordion">
+                        <li class="hidden-accordion-item"><a href="tasks-archive.html"
+                                                             class="hidden-accordion-item-link"><img
+                                class="hidden-accordion-item-image" src="img/archive-icon.svg"
+                                alt="User Icon">Archive</a>
+                        </li>
+                        <li class="hidden-accordion-item"><a href="tasks-dashboard.html"
+                                                             class="hidden-accordion-item-link"><img
+                                class="hidden-accordion-item-image" src="img/favourite-icon.svg" alt="Favourite Icon">My
+                            tasks</a></li>
+                        <li class="hidden-accordion-item"><a href="login.html" class="hidden-accordion-item-link"><img
+                                class="hidden-accordion-item-image" src="img/log-out-icon.svg" alt="Log Out Icon">Log
+                            Out</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </header>
 
-        <form action="/task/add" method="post" th:action="@{/task/add}" class="add-task-form" id="add-task-form">
-            <div class="task-card">
-                <div class="task-card-left-col">
-                    <div class="task-card-img _2"></div>
-                    <div class="task-card-form">
-                        <div class="task-card-form-row">
-                            <label class="task-card-label">Deadline to:</label>
-                            <input name="deadline" type="date" placeholder="2020-06-30" class="task-card-input">
+    <section class="add-task">
+        <div class="container">
+            <div class="tasks-caption">
+                <h2 class="tasks-caption-title">Add new task</h2>
+                <div class="tasks-caption-actions">
+                </div>
+            </div>
+
+            <form action="/task/add" method="post" th:action="@{/task/add}" class="add-task-form" id="add-task-form">
+                <div class="task-card">
+                    <div class="task-card-left-col">
+                        <div class="task-card-img _2"></div>
+                        <div class="task-card-form">
+                            <div class="task-card-form-row">
+                                <label class="task-card-label">Deadline to:</label>
+                                <input name="deadline" type="date" placeholder="2020-06-30" class="task-card-input">
+                            </div>
+                            <div class="task-card-form-row">
+                                <label class="task-card-label">Name Task</label>
+                                <input name="taskName" type="text" placeholder="Task name" class="task-card-input">
+                            </div>
                         </div>
-                        <div class="task-card-form-row">
-                            <label class="task-card-label">Name Task</label>
-                            <input name="taskName" type="text" placeholder="Task name" class="task-card-input">
+                    </div>
+
+                    <div class="task-card-right-col">
+                        <h1 class="task-card-header">Task Description</h1>
+                        <div class="task-card-text">
+                            <div class="task-card-form-row">
+                                <label class="task-card-label"></label>
+                                <textarea name="taskText" type="text" class="text-card-input"
+                                          placeholder="Write your text here..."></textarea>
+                            </div>
+                            </p>
+                            <input type="hidden" value="tasks" id="taskId"/>
+                            <input type="hidden" th:value="${userId}" id="userId"/>
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                            <button type="submit" class="btn btn-dark btn-add-task">Add task</button>
+                            <a th:href="@{/tasks}" class="btn btn-dark">Cancel</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="task-card-right-col">
-                    <h1 class="task-card-header">Task Description</h1>
-                    <p class="task-card-text">
-                    <div class="task-card-form-row">
-                        <label class="task-card-label"></label>
-                        <textarea name="taskText" type="text" class="text-card-input"
-                                  placeholder="Write your text here..."></textarea>
-                    </div>
-                    </p>
-                    <input type="hidden" value="tasks" id="taskId"/>
-                    <input type="hidden" th:value="${userId}" id="userId"/>
-                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-                    <button type="submit" class="btn btn-dark btn-add-task">Add task</button>
-                    <a th:href="@{/tasks}" class="btn btn-dark">Cancel</a>
-                </div>
-            </div>
-        </form>
-    </div>
-</section>
+            </form>
+        </div>
+    </section>
+</div>
 </body>
 </html>

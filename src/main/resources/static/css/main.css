@@ -464,6 +464,7 @@ body {
 .text-card-input {
     width: 1000px;
     height: 200px;
+
     padding: 7px 20px;
     font-size: 21px;
     border-radius: 10px;
@@ -498,6 +499,12 @@ body {
 }
 
 .task-card-text {
+    font-size: 21px;
+    line-height: 1.2em;
+    color: #828282;
+    margin-bottom: 50px;
+}
+.task-card-text1 {
     font-size: 21px;
     line-height: 1.2em;
     color: #828282;
