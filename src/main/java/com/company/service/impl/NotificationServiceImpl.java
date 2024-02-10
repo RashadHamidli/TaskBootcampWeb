@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,6 +15,7 @@ public class NotificationServiceImpl implements NotificationService {
     private final JavaMailSender javaMailSender;
 
     @Override
+    @Async
     public void sendNotification(String email, UserRespons userRespons) throws MailException {
         SimpleMailMessage mail = new SimpleMailMessage();
         mail.setTo(email);
